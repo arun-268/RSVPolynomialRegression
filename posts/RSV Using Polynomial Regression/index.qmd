@@ -28,6 +28,24 @@ Less commonly used tests include:
 
 Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
 
+#### Loaded Packages:
+
+```{r, echo=TRUE}
+library(readxl)
+library(tidyverse)
+```
+
+#### Load Dataset:
+
+```{r}
+data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx")
+ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
+```
+
+Why Ploynomial Regression?
+
+In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.
+
 ## Structure of the assignment
 
 1.  Load RSV dataset
@@ -48,14 +66,7 @@ Some tests can differentiate between RSV subtypes (A and B), but the clinical si
 
 9.  Conclusion.
 
-```{r, echo=TRUE}
-library(readxl)
-library(tidyverse)
-```
-
-```{r}
-data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx")
-ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
+```{}
 ```
 
 #### References:

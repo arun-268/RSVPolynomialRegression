@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "PolynomialRegression using RSV Data"
+  title: "Polynomial Regression using RSV Data"
   navbar:
     right:
       - about.qmd

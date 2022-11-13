@@ -1,5 +1,5 @@
 ---
-title: "Respiratory Syncytical Virus"
+title: "Respiratory Syncytical Virus(RSV)"
 author: "Arun Rajendran & Zhongyi Sun"
 date: "2022-11-13"
 categories: [Polynomial Regression]
@@ -48,7 +48,7 @@ Some tests can differentiate between RSV subtypes (A and B), but the clinical si
 
 9.  Conclusion.
 
-```{r, echo=TRUE}
+```{r}
 library(readxl)
 library(tidyverse)
 ```

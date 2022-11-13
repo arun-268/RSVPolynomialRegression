@@ -30,11 +30,11 @@ Some tests can differentiate between RSV subtypes (A and B), but the clinical si
 
 ## Structure of the assignment
 
-1.  build dataset
+1.  Load RSV dataset
 
-2.  plot them in scatter plot
+2.  plot them in scatter plot/graph
 
-3.  ensure the data is nonlinear and hence we are moving to polynomial regression.
+3.  Ensure the data is nonlinear and hence we are moving to polynomial regression.
 
 4.  prepare training and test data set
 
@@ -48,7 +48,7 @@ Some tests can differentiate between RSV subtypes (A and B), but the clinical si
 
 9.  Conclusion.
 
-```{r}
+```{r, echo=TRUE}
 library(readxl)
 library(tidyverse)
 ```
@@ -57,3 +57,9 @@ library(tidyverse)
 data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx")
 ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
 ```
+
+#### References:
+
+-   Posting Github website: https://www.youtube.com/watch?v=YoKjBcuUP0s
+
+-   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html

@@ -132,9 +132,7 @@ In simple linear regression algorithm only works when the relationship between t
 
 9.  Conclusion.
 
-```{=html}
 <!-- -->
-```
 
 #### References:
 
@@ -143,3 +141,7 @@ In simple linear regression algorithm only works when the relationship between t
 -   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html
 
 -   https://rpubs.com/aerlaut/optimizing-concrete-polynomial-regression
+
+Test change
+
+From Nina

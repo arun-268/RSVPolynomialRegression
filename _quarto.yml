@@ -4,18 +4,18 @@ project:
 
 website:
   title: "Polynomial Regression using RSV Data"
-  navbar:
-    right:
+  sidebar:
+    contents:
       - about.qmd
       - icon: github
         href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+    
 format:
   html:
     theme: Solar
     css: styles.css
     code-fold: true
+    code-tools: true
 
 editor: visual
 

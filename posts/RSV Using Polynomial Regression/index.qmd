@@ -4,6 +4,9 @@ author: "Arun Rajendran & Zhongyi Sun"
 date: "2022-11-13"
 categories: [Polynomial Regression]
 image: "viralinf.jpg"
+listing: 
+  contents: posts
+  type: table
 ---
 
 ### About RSV:

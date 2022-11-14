@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 3f21c4ae-55ad-4a58-9e04-1b93297c20b5
+      url: 'https://quartopub.com/sites/arun/polynomial-regression-using-rsv-data'

@@ -64,7 +64,41 @@ Let's now take a look at the distribution of our data by drawing boxplots.
 ```{r}
 data %>% 
    select_if(is.numeric) %>% 
-   boxplot(main = 'Boxplot of parameters', xlab = 'Parameters', ylab = 'Values')
+   boxplot(main = 'Boxplot of parameters', xlab = 'Parameters', ylab = 'RepWeekDate')
+```
+
+```{r}
+outlier_slag <- min(boxplot(data['PCRDetectionsnumerator'], plot = FALSE)$out)
+data.outliers <- data %>% 
+   filter(PCRDetectionsnumerator >= outlier_slag)
+```
+
+```{r}
+data %>% 
+    ggplot(aes(x = RepWeekDate, y = PCRDetectionsnumerator)) +
+    geom_point() + 
+    geom_point(data = data.outliers, aes(x = RepWeekDate, y = PCRDetectionsnumerator), col = 'red') + 
+    labs(
+        title = 'Distribution of strength : normal vs outlier (red)',
+        x = 'RepWeekDate',
+        y = 'PCRDetectionsnumerator'
+    )
+```
+
+#### Data Distribution:
+
+```{r}
+data %>% 
+    select_if(is.numeric) %>% 
+    pivot_longer(cols = -'Virus Isolation percent', names_to = 'param') %>% 
+    ggplot(aes(x = value)) +
+    geom_density() +
+    facet_wrap(~param, scales = 'free_x')  +
+    labs(
+        title = 'Density graph of parameters',
+        x = 'Parameters',
+        y = 'Week Frequency'
+    )
 ```
 
 #### *Why Ploynomial Regression?*
@@ -100,3 +134,5 @@ In simple linear regression algorithm only works when the relationship between t
 -   Posting Github website: https://www.youtube.com/watch?v=YoKjBcuUP0s
 
 -   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html
+
+-   https://rpubs.com/aerlaut/optimizing-concrete-polynomial-regression

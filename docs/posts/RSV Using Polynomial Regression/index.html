@@ -124,6 +124,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -204,12 +207,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="about-rsv" class="level4">
-<h4 class="anchored" data-anchor-id="about-rsv">About RSV:</h4>
+<section id="about-rsv" class="level3">
+<h3 class="anchored" data-anchor-id="about-rsv">About RSV:</h3>
 <p>Respiratory syncytial virus (RSV) was discovered in 1956 and has since been recognized as one of the most common causes of childhood illness. It causes annual outbreaks of respiratory illnesses in all age groups. In most regions of the United States, RSV circulation starts in the fall and peaks in the winter, but the timing and severity of RSV season in a given community can vary from year to year. Scientists are developing several vaccines, monoclonal antibodies, and antiviral therapies to help protect infants and young children, pregnant people (to protect their unborn babies), and older adults from severe RSV infection.</p>
-</section>
-<section id="clinical-laboratory-testing" class="level2">
-<h2 class="anchored" data-anchor-id="clinical-laboratory-testing"><strong>Clinical Laboratory Testing</strong></h2>
+<section id="clinical-laboratory-testing" class="level4">
+<h4 class="anchored" data-anchor-id="clinical-laboratory-testing"><strong>Clinical Laboratory Testing</strong></h4>
 <p>Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.</p>
 <p>The most commonly used types of RSV clinical laboratory tests are</p>
 <ul>
@@ -223,19 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.</p>
 </section>
-<section id="structure-of-the-assignment" class="level2">
-<h2 class="anchored" data-anchor-id="structure-of-the-assignment">Structure of the assignment</h2>
-<ol type="1">
-<li><p>Load RSV dataset</p></li>
-<li><p>plot them in scatter plot/graph</p></li>
-<li><p>Ensure the data is nonlinear and hence we are moving to polynomial regression.</p></li>
-<li><p>prepare training and test data set</p></li>
-<li><p>construct a polynomial regression model and ploy them in a graph using ggplot function</p></li>
-<li><p>use K- means clustering to spilt the data to find which degree of polynomial suits our regression model.</p></li>
-<li><p>construct a polynomial regression model.</p></li>
-<li><p>Test the model with some values and find whether fall in the regression lines.</p></li>
-<li><p>Conclusion.</p></li>
-</ol>
+<section id="package-loaded" class="level4">
+<h4 class="anchored" data-anchor-id="package-loaded">Package Loaded:</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -249,14 +240,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>New names:
-• `` -&gt; `...1`</code></pre>
+<pre><code>
+Attaching package: 'kableExtra'
+
+The following object is masked from 'package:dplyr':
+
+    group_rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>RepWeekDate,<span class="at">y=</span>PCRDetectionsnumerator))<span class="sc">+</span><span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="load-dataset">Load Dataset:</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> RepWeekDate </th>
+   <th style="text-align:right;"> Antigen Detections numerator </th>
+   <th style="text-align:right;"> PCRDetectionsnumerator </th>
+   <th style="text-align:right;"> Antigen Detection percent </th>
+   <th style="text-align:right;"> Virus Isolation percent </th>
+   <th style="text-align:right;"> PCR Detection percent </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2020-11-14 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 2.256 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.063 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2020-11-21 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 2.317 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.030 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2020-11-28 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0.681 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.027 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2020-12-05 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 0.546 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.085 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2020-12-12 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 58 </td>
+   <td style="text-align:right;"> 1.012 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.241 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2020-12-19 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 0.862 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.057 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>RepWeekDate,<span class="at">y=</span>PCRDetectionsnumerator))<span class="sc">+</span><span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'</code></pre>
 </div>
@@ -264,6 +333,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="data-preprocessing" class="level4">
+<h4 class="anchored" data-anchor-id="data-preprocessing">Data Preprocessing</h4>
+<p>The first thing that we’ll do in data preprocessing is to check for missing values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 RepWeekDate Antigen Detections numerator 
+                           0                            0 
+      PCRDetectionsnumerator    Antigen Detection percent 
+                           0                            0 
+     Virus Isolation percent        PCR Detection percent 
+                           0                            0 </code></pre>
+</div>
+</div>
+<p>Our dat does not have missing values, which is good. If theres is missing value, we have to decide to impute the data or exclude the obsevation.</p>
+</section>
+<section id="removing-outliers" class="level4">
+<h4 class="anchored" data-anchor-id="removing-outliers">Removing outliers</h4>
+<p>Let’s now take a look at the distribution of our data by drawing boxplots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">boxplot</span>(<span class="at">main =</span> <span class="st">'Boxplot of parameters'</span>, <span class="at">xlab =</span> <span class="st">'Parameters'</span>, <span class="at">ylab =</span> <span class="st">'Values'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="why-ploynomial-regression" class="level4">
+<h4 class="anchored" data-anchor-id="why-ploynomial-regression"><em>Why Ploynomial Regression?</em></h4>
+<p>In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.</p>
+</section>
+<section id="structure-of-the-assignment" class="level4">
+<h4 class="anchored" data-anchor-id="structure-of-the-assignment">Structure of the assignment</h4>
+<ol type="1">
+<li><p>Load RSV dataset</p></li>
+<li><p>plot them in scatter plot/graph</p></li>
+<li><p>Ensure the data is nonlinear and hence we are moving to polynomial regression.</p></li>
+<li><p>prepare training and test data set</p></li>
+<li><p>construct a polynomial regression model and ploy them in a graph using ggplot function</p></li>
+<li><p>use K- means clustering to spilt the data to find which degree of polynomial suits our regression model.</p></li>
+<li><p>construct a polynomial regression model.</p></li>
+<li><p>Test the model with some values and find whether fall in the regression lines.</p></li>
+<li><p>Conclusion.</p></li>
+</ol>
+<!-- -->
+</section>
 <section id="references" class="level4">
 <h4 class="anchored" data-anchor-id="references">References:</h4>
 <ul>

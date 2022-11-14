@@ -6,11 +6,11 @@ categories: [Polynomial Regression]
 image: "viralinf.jpg"
 ---
 
-#### About RSV:
+### About RSV:
 
 Respiratory syncytial virus (RSV) was discovered in 1956 and has since been recognized as one of the most common causes of childhood illness. It causes annual outbreaks of respiratory illnesses in all age groups. In most regions of the United States, RSV circulation starts in the fall and peaks in the winter, but the timing and severity of RSV season in a given community can vary from year to year. Scientists are developing several vaccines, monoclonal antibodies, and antiviral therapies to help protect infants and young children, pregnant people (to protect their unborn babies), and older adults from severe RSV infection.
 
-## **Clinical Laboratory Testing**
+#### **Clinical Laboratory Testing**
 
 Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
 
@@ -28,25 +28,50 @@ Less commonly used tests include:
 
 Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
 
-#### Loaded Packages:
+#### Package Loaded:
 
 ```{r, echo=TRUE}
 library(readxl)
 library(tidyverse)
+library(kableExtra)
 ```
 
 #### Load Dataset:
 
 ```{r}
 data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx")
+data %>% 
+    head() %>% 
+    kable() %>% 
+    kable_styling()
 ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
 ```
 
-Why Ploynomial Regression?
+#### Data Preprocessing
+
+The first thing that we'll do in data preprocessing is to check for missing values.
+
+```{r}
+colSums(is.na(data))
+```
+
+Our dat does not have missing values, which is good. If theres is missing value, we have to decide to impute the data or exclude the obsevation.
+
+#### Removing outliers
+
+Let's now take a look at the distribution of our data by drawing boxplots.
+
+```{r}
+data %>% 
+   select_if(is.numeric) %>% 
+   boxplot(main = 'Boxplot of parameters', xlab = 'Parameters', ylab = 'Values')
+```
+
+#### *Why Ploynomial Regression?*
 
 In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.
 
-## Structure of the assignment
+#### Structure of the assignment
 
 1.  Load RSV dataset
 
@@ -66,7 +91,8 @@ In simple linear regression algorithm only works when the relationship between t
 
 9.  Conclusion.
 
-```{}
+```{=html}
+<!-- -->
 ```
 
 #### References:

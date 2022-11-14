@@ -1,9 +1,12 @@
 project:
-  type: website
-  output-dir: docs
+  #type: book
+  #output-dir: _book
+#commented for website
+ type: website
+ output-dir: docs
 
 website:
-  title: "Polynomial Regression using RSV Data"
+  title: "Home"
   sidebar:
     contents:
       - about.qmd

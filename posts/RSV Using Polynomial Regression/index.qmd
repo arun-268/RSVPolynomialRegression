@@ -2,7 +2,7 @@
 title: "Respiratory Syncytical Virus(RSV)"
 author: "Arun Rajendran & Zhongyi Sun"
 date: "2022-11-13"
-categories: [Polynomial Regression]
+categories: default
 image: "viralinf.jpg"
 listing: 
   contents: posts
@@ -13,7 +13,7 @@ listing:
 
 Respiratory syncytial virus (RSV) was discovered in 1956 and has since been recognized as one of the most common causes of childhood illness. It causes annual outbreaks of respiratory illnesses in all age groups. In most regions of the United States, RSV circulation starts in the fall and peaks in the winter, but the timing and severity of RSV season in a given community can vary from year to year. Scientists are developing several vaccines, monoclonal antibodies, and antiviral therapies to help protect infants and young children, pregnant people (to protect their unborn babies), and older adults from severe RSV infection.
 
-#### **Clinical Laboratory Testing**
+### **Clinical Laboratory Testing**
 
 Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
 
@@ -47,7 +47,7 @@ data %>%
     head() %>% 
     kable() %>% 
     kable_styling()
-ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
+
 ```
 
 #### Data Preprocessing
@@ -102,6 +102,10 @@ data %>%
         x = 'Parameters',
         y = 'Week Frequency'
     )
+```
+
+```{r}
+ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
 ```
 
 #### *Why Ploynomial Regression?*

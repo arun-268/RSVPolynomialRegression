@@ -142,6 +142,6 @@ In simple linear regression algorithm only works when the relationship between t
 
 -   https://rpubs.com/aerlaut/optimizing-concrete-polynomial-regression
 
-Test change
+Test
 
 From Nina

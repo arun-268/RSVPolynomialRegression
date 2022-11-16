@@ -8,11 +8,37 @@ editor: visual
 
 **Introduction**
 
-Respiratory syncytial virus (RSV) was discovered in 1956 and has since been recognized as one of the most common causes of childhood illness. RSV symptoms usually look like a common cold, but it can be serious, leading to bronchiolitis (inflammation of the small airways in the lung) and pneumonia, especially for infants and older adults. According to the Centers for Disease Control and Prevention, RSV results in around 58,000 annual hospitalizations and 100 to 300 deaths among children under 5\[1\]. In most regions of the United States, RSV circulation starts in the fall and peaks in the winter. With mask-wearing and physical distancing for COVID-19, there were fewer cases of RSV in 2020. However, RSV cases began to increase in spring 2021 when safety measures relaxed with the arrival of COVID-19 vaccines. This year, RSV in multiple U.S. regions are nearing seasonal peak levels and is filling hospital beds. \[2\] It is unclear to anyone where RSV will lead us, a reliable prediction model for RSV data is very crucial for policymakers to implement fast actions to curb the spread of the infection, for health system to get prepared not to be overburdened, and for us to protect ourselves.
+1.Background
 
-from Nina
+Respiratory syncytial virus (RSV) was discovered in 1956 and has since been recognized as one of the most common causes of childhood illness. RSV symptoms usually look like a common cold, but it can be serious, leading to bronchiolitis (inflammation of the small airways in the lung) and pneumonia, especially for infants and older adults.
 
-\
+According to the Centers for Disease Control and Prevention, RSV results in around 58,000 annual hospitalizations and 100 to 300 deaths among children under 5\[1\]. In most regions of the United States, RSV circulation starts in the fall and peaks in the winter. With mask-wearing and physical distancing for COVID-19, there were fewer cases of RSV in 2020. However, RSV cases began to increase in spring 2021 when safety measures relaxed with the arrival of COVID-19 vaccines. This year, RSV in multiple U.S. regions are nearing seasonal peak levels and is filling hospital beds. \[2\] It is unclear to anyone where RSV will lead us, a reliable prediction model for RSV data is very crucial for policymakers to implement fast actions to curb the spread of the infection, and for health system to get prepared not to be overburdened, and for infectious disease researchers to conduct further researches.
+
+![](images/rates%20of%20rsv%20hospitalization.png)\
+
+[RSV-NET Interactive Dashboard \| CDC](https://www.cdc.gov/rsv/research/rsv-net/dashboard.html)
+
+2.Literature Review
+
+Respiratory syncytial virus (RSV) infection trend has gained many researchers' concerns globally. Thongpan, Ilada etc. applied multivariate time-series analysis to show the possible prediction of RSV activity based on the climate in Thailand. \[3\] The other researchers to track RSV through internet search engine data. Oren, Eyal etc. highlights the use of search filters and domain adaptation techniques to assist in identifying spread of both local and more widespread RSV transmission where comprehensive epidemiological data is not easy to collect \[4\]. Manuel, Britta etc. applied logistic regression to develop a prediction model and developed a web-based application to predict the individual probability of RSV infection\[5\]. \
+Furthermore, researchers are using different modeling approaches to predict the RSV trend. A research done by Reis, Julia etc. try to built a real-time RSV prediction system using a susceptible-infectious-recovered (SIR) model in conjunction with an ensemble adjustment Kalman filter (EAKF) and 10 years CDC data\[6\]. Bayesian stochastic susceptible‐infected‐recovered‐susceptible (SIRS) model is presented by Corberán-Vallet etc. to understand RSV dynamics in the region of Valencia, Spain. However, this continuous‐time deterministic model is not suitable when the initial number of infected individuals is small\[7\]. Leecaster, Molly etc. use simple linear regression to explore the relationship between three epidemic characteristics (final epidemic size, days to peak, and epidemic length) and exponential growth calculated from four weeks of daily case data. They find out exponential growth was correlated to epidemic characteristics\[8\].
+
+3.Statement of problem
+
+We have seen a dramatic growth of RSV cases this year, but there are not any articles founded yet to give prediction of the RSV cases now. Based on the previous researches and the curve of RSV data, we propose a new statistical regression tool---polynomial regression model --- to investigate the dynamic of RSV in USA.
+
 \[1\]https://www.cdc.gov/rsv/research/index.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Frsv%2Fresearch%2Fus-surveillance.html
 
 \[2\][Surge in RSV, virus that can severely sicken infants, fills hospital beds (nbcnews.com)](https://www.nbcnews.com/health/health-news/surge-rsv-virus-fills-hospitals-can-severely-sicken-babies-rcna52082)
+
+\[3\] Respiratory syncytial virus infection trend is associated with meteorological factors, Thongpan, Ilada ; Vongpunsawad, Sompong ; Poovorawan, Yong, Scientific reports, 2020, Vol.10 (1), p.10931-10931
+
+\[4\]Respiratory syncytil virus tracking using internet search engine data, Oren, Eyal ; Frere, Justin ; Yom-Tov, Eran ; Yom-Tov, EladBMC, public health, 2018, Vol.18 (1), p.445-445
+
+\[5\]RSVpredict: An Online Tool to Calculate the Likelihood of Respiratory Syncytial Virus Infection in Children Hospitalized With Acute Respiratory Disease, Manuel, Britta ; Hackbusch, Matthes ; Tabatabai, Julia ; Hoos, Johannes ; Peters, Rebecca ; Valerie Schnee, Sarah ; Marlene Ihling, Clara ; Schnitzler, Paul ; Pfeil, Johannes, The Pediatric infectious disease journal, 2019, Vol.38 (7), p.678-681
+
+\[6\] Retrospective Parameter Estimation and Forecast of Respiratory Syncytial Virus in the United States Reis, Julia ; Shaman, Jeffrey; Wilke, Claus O.PLoS computational biology, 2016, Vol.12 (10), p.e1005133-e1005133
+
+\[7\] A Bayesian SIRS model for the analysis of respiratory syncytial virus in the region of Valencia, Spain Corberán-Vallet, Ana ; Santonja, Francisco J. Biometrical journal, 2014, Vol.56 (5), p.808-818
+
+\[8\] Modeling the variations in pediatric respiratory syncytial virus seasonal epidemics, Leecaster, Molly ; Gesteland, Per ; Greene, Tom ; Walton, Nephi ; Gundlapalli, Adi ; Rolfs, Robert ; Byington, Carrie ; Samore, Matthew BMC infectious diseases, 2011, Vol.11 (1), p.105-105

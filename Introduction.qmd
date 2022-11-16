@@ -1,0 +1,18 @@
+---
+title: "Introduction"
+format: html
+editor: visual
+---
+
+## Polynomial Regression for CDC data with Application for Perdicting RSV in USA
+
+**Introduction**
+
+Respiratory syncytial virus (RSV) was discovered in 1956 and has since been recognized as one of the most common causes of childhood illness. RSV symptoms usually look like a common cold, but it can be serious, leading to bronchiolitis (inflammation of the small airways in the lung) and pneumonia, especially for infants and older adults. According to the Centers for Disease Control and Prevention, RSV results in around 58,000 annual hospitalizations and 100 to 300 deaths among children under 5\[1\]. In most regions of the United States, RSV circulation starts in the fall and peaks in the winter. With mask-wearing and physical distancing for COVID-19, there were fewer cases of RSV in 2020. However, RSV cases began to increase in spring 2021 when safety measures relaxed with the arrival of COVID-19 vaccines. This year, RSV in multiple U.S. regions are nearing seasonal peak levels and is filling hospital beds. \[2\] It is unclear to anyone where RSV will lead us, a reliable prediction model for RSV data is very crucial for policymakers to implement fast actions to curb the spread of the infection, for health system to get prepared not to be overburdened, and for us to protect ourselves.
+
+from Nina
+
+\
+\[1\]https://www.cdc.gov/rsv/research/index.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Frsv%2Fresearch%2Fus-surveillance.html
+
+\[2\][Surge in RSV, virus that can severely sicken infants, fills hospital beds (nbcnews.com)](https://www.nbcnews.com/health/health-news/surge-rsv-virus-fills-hospitals-can-severely-sicken-babies-rcna52082)

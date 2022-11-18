@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Data Analysis.html" rel="next">
+<link href="./Methods.html" rel="next">
 <link href="./index.qmd" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -171,17 +171,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Respiratory Syncytical Virus(RSV)</span></a>
+  <a href="./Methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Method</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">References</span></a>
+  <a href="./Data Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Respiratory Syncytical Virus(RSV)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">About</span></a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">About</span></a>
   </div>
 </li>
     </ul>
@@ -197,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="toc-section-number">2.1.1</span>  Background</a></li>
   <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review"><span class="toc-section-number">2.1.2</span>  Literature Review</a></li>
-  <li><a href="#clinical-laboratory-testing" id="toc-clinical-laboratory-testing" class="nav-link" data-scroll-target="#clinical-laboratory-testing"><span class="toc-section-number">2.1.3</span>  <strong>Clinical Laboratory Testing</strong></a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement"><span class="toc-section-number">2.1.3</span>  Problem Statement:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -236,20 +241,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Respiratory syncytial virus (RSV) infection trend has gained many researchers’ concerns globally. Thongpan, Ilada etc. applied multivariate time-series analysis to show the possible prediction of RSV activity based on the climate in Thailand. [3] The other researchers to track RSV through internet search engine data. Oren, Eyal etc. highlights the use of search filters and domain adaptation techniques to assist in identifying spread of both local and more widespread RSV transmission where comprehensive epidemiological data is not easy to collect [4]. Manuel, Britta etc. applied logistic regression to develop a prediction model and developed a web-based application to predict the individual probability of RSV infection[5].<br>
 Furthermore, researchers are using different modeling approaches to predict the RSV trend. A research done by Reis, Julia etc. try to built a real-time RSV prediction system using a susceptible-infectious-recovered (SIR) model in conjunction with an ensemble adjustment Kalman filter (EAKF) and 10 years CDC data[6]. Bayesian stochastic susceptible‐infected‐recovered‐susceptible (SIRS) model is presented by Corberán-Vallet etc. to understand RSV dynamics in the region of Valencia, Spain. However, this continuous‐time deterministic model is not suitable when the initial number of infected individuals is small[7]. Leecaster, Molly etc. use simple linear regression to explore the relationship between three epidemic characteristics (final epidemic size, days to peak, and epidemic length) and exponential growth calculated from four weeks of daily case data. They find out exponential growth was correlated to epidemic characteristics[8].</p>
 </section>
-<section id="clinical-laboratory-testing" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="clinical-laboratory-testing"><span class="header-section-number">2.1.3</span> <strong>Clinical Laboratory Testing</strong></h3>
-<p>Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.</p>
-<p>The most commonly used types of RSV clinical laboratory tests are</p>
-<ul>
-<li><p>Real-time reverse transcriptase-polymerase chain reaction (rRT-PCR), which is more sensitive than culture and antigen testing</p></li>
-<li><p>Antigen testing, which is highly sensitive in children but not sensitive in adults</p></li>
-</ul>
-<p>Less commonly used tests include:</p>
-<ul>
-<li><p>Viral culture</p></li>
-<li><p>Serology, which is usually only used for research and surveillance studies</p></li>
-</ul>
-<p>Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.</p>
+<section id="problem-statement" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="problem-statement"><span class="header-section-number">2.1.3</span> Problem Statement:</h3>
+<p>We have seen a dramatic growth of RSV cases this year, but there are not any articles founded yet to give prediction of the RSV cases now. Based on the previous researches and the curve of RSV data, we propose a new statistical regression tool—polynomial regression model — to investigate the dynamic of RSV in USA.</p>
 
 
 <!-- -->
@@ -414,8 +408,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Data Analysis.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Respiratory Syncytical Virus(RSV)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Methods.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Method</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -442,23 +436,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Respiratory syncytial virus (RSV) infection trend has gained many researchers' concerns globally. Thongpan, Ilada etc. applied multivariate time-series analysis to show the possible prediction of RSV activity based on the climate in Thailand. <span class="sc">\[</span>3<span class="sc">\]</span> The other researchers to track RSV through internet search engine data. Oren, Eyal etc. highlights the use of search filters and domain adaptation techniques to assist in identifying spread of both local and more widespread RSV transmission where comprehensive epidemiological data is not easy to collect <span class="sc">\[</span>4<span class="sc">\]</span>. Manuel, Britta etc. applied logistic regression to develop a prediction model and developed a web-based application to predict the individual probability of RSV infection<span class="sc">\[</span>5<span class="sc">\]</span>.\</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Furthermore, researchers are using different modeling approaches to predict the RSV trend. A research done by Reis, Julia etc. try to built a real-time RSV prediction system using a susceptible-infectious-recovered (SIR) model in conjunction with an ensemble adjustment Kalman filter (EAKF) and 10 years CDC data<span class="sc">\[</span>6<span class="sc">\]</span>. Bayesian stochastic susceptible‐infected‐recovered‐susceptible (SIRS) model is presented by Corberán-Vallet etc. to understand RSV dynamics in the region of Valencia, Spain. However, this continuous‐time deterministic model is not suitable when the initial number of infected individuals is small<span class="sc">\[</span>7<span class="sc">\]</span>. Leecaster, Molly etc. use simple linear regression to explore the relationship between three epidemic characteristics (final epidemic size, days to peak, and epidemic length) and exponential growth calculated from four weeks of daily case data. They find out exponential growth was correlated to epidemic characteristics<span class="sc">\[</span>8<span class="sc">\]</span>.</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Clinical Laboratory Testing**</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem Statement:</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>The most commonly used types of RSV clinical laboratory tests are</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Real-time reverse transcriptase-polymerase chain reaction (rRT-PCR), which is more sensitive than culture and antigen testing</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Antigen testing, which is highly sensitive in children but not sensitive in adults</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Less commonly used tests include:</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Viral culture</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Serology, which is usually only used for research and surveillance studies</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>We have seen a dramatic growth of RSV cases this year, but there are not any articles founded yet to give prediction of the RSV cases now. Based on the previous researches and the curve of RSV data, we propose a new statistical regression tool---polynomial regression model --- to investigate the dynamic of RSV in USA.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

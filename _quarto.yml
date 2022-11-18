@@ -10,6 +10,7 @@ book:
   chapters:
   - index.qmd
   - Introduction.qmd
+  - Methods.qmd
   - Data Analysis.qmd
   - References.qmd
   - about.qmd

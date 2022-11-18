@@ -4,36 +4,15 @@ author: "Arun Rajendran & Zhongyi Sun"
 date: "2022-11-13"
 categories: true
 image: "viralinf.jpg"
-listing: 
-  contents: posts
-  type: table
 ---
 
 ### Problem Statement:
 
 We have seen a dramatic growth of RSV cases this year, but there are not any articles founded yet to give prediction of the RSV cases now. Based on the previous researches and the curve of RSV data, we propose a new statistical regression tool---polynomial regression model --- to investigate the dynamic of RSV in USA.
 
-### **Clinical Laboratory Testing**
-
-Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
-
-The most commonly used types of RSV clinical laboratory tests are
-
--   Real-time reverse transcriptase-polymerase chain reaction (rRT-PCR), which is more sensitive than culture and antigen testing
-
--   Antigen testing, which is highly sensitive in children but not sensitive in adults
-
-Less commonly used tests include:
-
--   Viral culture
-
--   Serology, which is usually only used for research and surveillance studies
-
-Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
-
 #### Package Loaded:
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, warning=FALSE}
 library(readxl)
 library(tidyverse)
 library(kableExtra)
@@ -132,26 +111,4 @@ In simple linear regression algorithm only works when the relationship between t
 
 9.  Conclusion.
 
-#### References:
-
--   Posting Github website: https://www.youtube.com/watch?v=YoKjBcuUP0s
-
--   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html
-
--   https://rpubs.com/aerlaut/optimizing-concrete-polynomial-regression
-
-\[1\]https://www.cdc.gov/rsv/research/index.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Frsv%2Fresearch%2Fus-surveillance.html
-
-\[2\][Surge in RSV, virus that can severely sicken infants, fills hospital beds (nbcnews.com)](https://www.nbcnews.com/health/health-news/surge-rsv-virus-fills-hospitals-can-severely-sicken-babies-rcna52082)
-
-\[3\] Respiratory syncytial virus infection trend is associated with meteorological factors, Thongpan, Ilada ; Vongpunsawad, Sompong ; Poovorawan, Yong, Scientific reports, 2020, Vol.10 (1), p.10931-10931
-
-\[4\]Respiratory syncytil virus tracking using internet search engine data, Oren, Eyal ; Frere, Justin ; Yom-Tov, Eran ; Yom-Tov, EladBMC, public health, 2018, Vol.18 (1), p.445-445
-
-\[5\]RSVpredict: An Online Tool to Calculate the Likelihood of Respiratory Syncytial Virus Infection in Children Hospitalized With Acute Respiratory Disease, Manuel, Britta ; Hackbusch, Matthes ; Tabatabai, Julia ; Hoos, Johannes ; Peters, Rebecca ; Valerie Schnee, Sarah ; Marlene Ihling, Clara ; Schnitzler, Paul ; Pfeil, Johannes, The Pediatric infectious disease journal, 2019, Vol.38 (7), p.678-681
-
-\[6\] Retrospective Parameter Estimation and Forecast of Respiratory Syncytial Virus in the United States Reis, Julia ; Shaman, Jeffrey; Wilke, Claus O.PLoS computational biology, 2016, Vol.12 (10), p.e1005133-e1005133
-
-\[7\] A Bayesian SIRS model for the analysis of respiratory syncytial virus in the region of Valencia, Spain Corberán-Vallet, Ana ; Santonja, Francisco J. Biometrical journal, 2014, Vol.56 (5), p.808-818
-
-\[8\] Modeling the variations in pediatric respiratory syncytial virus seasonal epidemics, Leecaster, Molly ; Gesteland, Per ; Greene, Tom ; Walton, Nephi ; Gundlapalli, Adi ; Rolfs, Robert ; Byington, Carrie ; Samore, Matthew BMC infectious diseases, 2011, Vol.11 (1), p.105-105
+#### 

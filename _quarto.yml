@@ -1,27 +1,40 @@
 project:
-  #type: book
-  #output-dir: _book
-#commented for website
- type: website
- output-dir: docs
+ type: book
+ output-dir: _book
 
-website:
-  title: "Home"
-  sidebar:
-    contents:
-      - about.qmd
-      - icon: github
-        href: https://github.com/
-      - Introduction.qmd
-      - icon: github
-        href: https://github.com/
+book: 
+  title: "RSV Using Polynomial Regression Book"
+  reader-mode: true
+ # author: "Arun & Nina""
+  date: "11/18/2022"
+  chapters:
+  - index.qmd
+  - Introduction.qmd
+  - Data Analysis.qmd
+  - References.qmd
+  - about.qmd
+
+
+    # - summary.qmd
+   #  - references.qmd
+
+ 
+#website:
+  #title: "Home"
+  #sidebar:
+    #contents:
+     # - Introduction.qmd
+     # - about.qmd
+   
     
 format:
   html:
-    theme: Solar
+    theme: solar
     css: styles.css
     code-fold: true
     code-tools: true
-
+  pdf:
+    documentclass: scrreport
+    
 editor: visual
 

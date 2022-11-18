@@ -4,36 +4,15 @@ author: "Arun Rajendran & Zhongyi Sun"
 date: "2022-11-13"
 categories: true
 image: "viralinf.jpg"
-listing: 
-  contents: posts
-  type: table
 ---
 
 ### Problem Statement:
 
 We have seen a dramatic growth of RSV cases this year, but there are not any articles founded yet to give prediction of the RSV cases now. Based on the previous researches and the curve of RSV data, we propose a new statistical regression tool---polynomial regression model --- to investigate the dynamic of RSV in USA.
 
-### **Clinical Laboratory Testing**
-
-Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
-
-The most commonly used types of RSV clinical laboratory tests are
-
--   Real-time reverse transcriptase-polymerase chain reaction (rRT-PCR), which is more sensitive than culture and antigen testing
-
--   Antigen testing, which is highly sensitive in children but not sensitive in adults
-
-Less commonly used tests include:
-
--   Viral culture
-
--   Serology, which is usually only used for research and surveillance studies
-
-Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
-
 #### Package Loaded:
 
-```{r, echo=TRUE}
+```{r, echo=FALSE, warning=FALSE}
 library(readxl)
 library(tidyverse)
 library(kableExtra)

@@ -1,0 +1,28 @@
+---
+title: "References"
+editor: visual
+---
+
+## References:
+
+\[1\]https://www.cdc.gov/rsv/research/index.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Frsv%2Fresearch%2Fus-surveillance.html
+
+\[2\][Surge in RSV, virus that can severely sicken infants, fills hospital beds (nbcnews.com)](https://www.nbcnews.com/health/health-news/surge-rsv-virus-fills-hospitals-can-severely-sicken-babies-rcna52082)
+
+\[3\] Respiratory syncytial virus infection trend is associated with meteorological factors, Thongpan, Ilada ; Vongpunsawad, Sompong ; Poovorawan, Yong, Scientific reports, 2020, Vol.10 (1), p.10931-10931
+
+\[4\]Respiratory syncytil virus tracking using internet search engine data, Oren, Eyal ; Frere, Justin ; Yom-Tov, Eran ; Yom-Tov, EladBMC, public health, 2018, Vol.18 (1), p.445-445
+
+\[5\]RSVpredict: An Online Tool to Calculate the Likelihood of Respiratory Syncytial Virus Infection in Children Hospitalized With Acute Respiratory Disease, Manuel, Britta ; Hackbusch, Matthes ; Tabatabai, Julia ; Hoos, Johannes ; Peters, Rebecca ; Valerie Schnee, Sarah ; Marlene Ihling, Clara ; Schnitzler, Paul ; Pfeil, Johannes, The Pediatric infectious disease journal, 2019, Vol.38 (7), p.678-681
+
+\[6\] Retrospective Parameter Estimation and Forecast of Respiratory Syncytial Virus in the United States Reis, Julia ; Shaman, Jeffrey; Wilke, Claus O.PLoS computational biology, 2016, Vol.12 (10), p.e1005133-e1005133
+
+\[7\] A Bayesian SIRS model for the analysis of respiratory syncytial virus in the region of Valencia, Spain Corberán-Vallet, Ana ; Santonja, Francisco J. Biometrical journal, 2014, Vol.56 (5), p.808-818
+
+\[8\] Modeling the variations in pediatric respiratory syncytial virus seasonal epidemics, Leecaster, Molly ; Gesteland, Per ; Greene, Tom ; Walton, Nephi ; Gundlapalli, Adi ; Rolfs, Robert ; Byington, Carrie ; Samore, Matthew BMC infectious diseases, 2011, Vol.11 (1), p.105-105
+
+-   Posting Github website: https://www.youtube.com/watch?v=YoKjBcuUP0s
+
+-   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html
+
+-   https://rpubs.com/aerlaut/optimizing-concrete-polynomial-regression

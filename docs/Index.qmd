@@ -1,11 +1,10 @@
 ---
-title: "Respiratory Syncytical Virus(RSV)"
-author: "Arun Rajendran & Zhongyi Sun"
-date: "2022-11-13"
+title: "Home"
+format: html
 editor: visual
 ---
 
-# **Welcome**
+# **Preface**
 
 This is the book to highlight our proposal of new statistical regression tool, Polynomial Regression Model, to investigate the dynamic of RSV in USA.
 

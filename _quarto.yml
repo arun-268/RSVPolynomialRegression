@@ -3,7 +3,7 @@ project:
  output-dir: docs
 
 book: 
-  title: "Home"
+  title: "Book on RSV Data Analysis using Polynomial Regression method"
   reader-mode: true
  # author: "Arun & Nina""
   date: "11/18/2022"

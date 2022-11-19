@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Book on RSV Data Analysis using Polynomial Regression method - 4&nbsp; Data Analysis and Results</title>
+<title>Book on RSV Data Analysis using Polynomial Regression method - 3&nbsp; Data Analysis and Results</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -169,27 +169,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Method</span></a>
+  <a href="./Methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Method</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data Analysis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></a>
+  <a href="./Data Analysis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">References</span></a>
+  <a href="./References.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">References</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">About</span></a>
+  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">About</span></a>
   </div>
 </li>
     </ul>
@@ -201,11 +201,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#package-loaded" id="toc-package-loaded" class="nav-link active" data-scroll-target="#package-loaded"><span class="toc-section-number">4.1</span>  Package Loaded:</a></li>
-  <li><a href="#load-dataset" id="toc-load-dataset" class="nav-link" data-scroll-target="#load-dataset"><span class="toc-section-number">4.2</span>  Load Dataset:</a></li>
-  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing"><span class="toc-section-number">4.3</span>  Data Preprocessing</a></li>
-  <li><a href="#removing-outliers" id="toc-removing-outliers" class="nav-link" data-scroll-target="#removing-outliers"><span class="toc-section-number">4.4</span>  Removing Outliers</a></li>
-  <li><a href="#data-distribution" id="toc-data-distribution" class="nav-link" data-scroll-target="#data-distribution"><span class="toc-section-number">4.5</span>  Data Distribution:</a></li>
+  <li><a href="#package-loaded" id="toc-package-loaded" class="nav-link active" data-scroll-target="#package-loaded"><span class="toc-section-number">3.1</span>  Package Loaded:</a></li>
+  <li><a href="#load-dataset" id="toc-load-dataset" class="nav-link" data-scroll-target="#load-dataset"><span class="toc-section-number">3.2</span>  Load Dataset:</a></li>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing"><span class="toc-section-number">3.3</span>  Data Preprocessing</a></li>
+  <li><a href="#removing-outliers" id="toc-removing-outliers" class="nav-link" data-scroll-target="#removing-outliers"><span class="toc-section-number">3.4</span>  Removing Outliers</a></li>
+  <li><a href="#data-distribution" id="toc-data-distribution" class="nav-link" data-scroll-target="#data-distribution"><span class="toc-section-number">3.5</span>  Data Distribution:</a></li>
   </ul>
 </nav>
     </div>
@@ -214,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -228,8 +228,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="package-loaded" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="package-loaded"><span class="header-section-number">4.1</span> Package Loaded:</h2>
+<section id="package-loaded" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="package-loaded"><span class="header-section-number">3.1</span> Package Loaded:</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -260,8 +260,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="load-dataset" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="load-dataset"><span class="header-section-number">4.2</span> Load Dataset:</h2>
+<section id="load-dataset" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="load-dataset"><span class="header-section-number">3.2</span> Load Dataset:</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -339,8 +339,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="data-preprocessing" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="data-preprocessing"><span class="header-section-number">4.3</span> Data Preprocessing</h2>
+<section id="data-preprocessing" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="data-preprocessing"><span class="header-section-number">3.3</span> Data Preprocessing</h2>
 <p>The first thing that we’ll do in data preprocessing is to check for missing values.</p>
 <div class="cell">
 <details>
@@ -358,8 +358,8 @@ The following object is masked from 'package:dplyr':
 </div>
 <p>Our dat does not have missing values, which is good. If theres is missing value, we have to decide to impute the data or exclude the obsevation.</p>
 </section>
-<section id="removing-outliers" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="removing-outliers"><span class="header-section-number">4.4</span> Removing Outliers</h2>
+<section id="removing-outliers" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="removing-outliers"><span class="header-section-number">3.4</span> Removing Outliers</h2>
 <p>Let’s now take a look at the distribution of our data by drawing boxplots.</p>
 <div class="cell">
 <details>
@@ -398,8 +398,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="data-distribution" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="data-distribution"><span class="header-section-number">4.5</span> Data Distribution:</h2>
+<section id="data-distribution" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="data-distribution"><span class="header-section-number">3.5</span> Data Distribution:</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -431,11 +431,11 @@ The following object is masked from 'package:dplyr':
 <p><img src="Data-Analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="section" class="level4" data-number="4.5.0.1">
-<h4 data-number="4.5.0.1" class="anchored" data-anchor-id="section"><span class="header-section-number">4.5.0.1</span> </h4>
+<section id="section" class="level4" data-number="3.5.0.1">
+<h4 data-number="3.5.0.1" class="anchored" data-anchor-id="section"><span class="header-section-number">3.5.0.1</span> </h4>
 </section>
-<section id="structure-of-the-assignment" class="level4" data-number="4.5.0.2">
-<h4 data-number="4.5.0.2" class="anchored" data-anchor-id="structure-of-the-assignment"><span class="header-section-number">4.5.0.2</span> Structure of the assignment</h4>
+<section id="structure-of-the-assignment" class="level4" data-number="3.5.0.2">
+<h4 data-number="3.5.0.2" class="anchored" data-anchor-id="structure-of-the-assignment"><span class="header-section-number">3.5.0.2</span> Structure of the assignment</h4>
 <ol type="1">
 <li><p>Load RSV dataset</p></li>
 <li><p>plot them in scatter plot/graph</p></li>
@@ -448,8 +448,8 @@ The following object is masked from 'package:dplyr':
 <li><p>Conclusion.</p></li>
 </ol>
 </section>
-<section id="section-1" class="level4" data-number="4.5.0.3">
-<h4 data-number="4.5.0.3" class="anchored" data-anchor-id="section-1"><span class="header-section-number">4.5.0.3</span> </h4>
+<section id="section-1" class="level4" data-number="3.5.0.3">
+<h4 data-number="3.5.0.3" class="anchored" data-anchor-id="section-1"><span class="header-section-number">3.5.0.3</span> </h4>
 
 
 <!-- -->
@@ -610,12 +610,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Methods.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Method</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Method</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./References.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">References</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">References</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">

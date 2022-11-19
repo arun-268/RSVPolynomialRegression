@@ -1,10 +1,4 @@
----
-title: "Home"
-format: html
-editor: visual
----
-
-# **Preface**
+# **Preface** {.unnumbered}
 
 This is the book to highlight our proposal of new statistical regression tool, Polynomial Regression Model, to investigate the dynamic of RSV in USA.
 

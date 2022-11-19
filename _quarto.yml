@@ -5,7 +5,7 @@ project:
 book: 
   title: "Book on RSV Data Analysis using Polynomial Regression method"
   reader-mode: true
- # author: "Arun & Nina""
+  author: "Arun & Zhongyi"
   date: "11/18/2022"
   chapters:
   - index.qmd
@@ -14,19 +14,6 @@ book:
   - Data Analysis.qmd
   - References.qmd
   - about.qmd
-
-
-    # - summary.qmd
-   #  - references.qmd
-
- 
-#website:
-  #title: "Home"
-  #sidebar:
-    #contents:
-     # - Introduction.qmd
-     # - about.qmd
-   
     
 format:
   html:

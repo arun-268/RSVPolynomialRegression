@@ -1,0 +1,96 @@
+---
+title: "Data analysis"
+format: html
+editor: visual
+---
+
+## Data Analysis and Results
+
+**3.1 Data Pre-processing**
+
+Data was examined before our modeling, including checking for missing values and removing outliers.
+
+\[From Arun code and content\]
+
+**3.2 Data Distribution**
+
+Ggplot was utilized to show how many RSV cases and how many percent positive cases was detected in CDC participating laboratories weekly since Nov 14, 2020.
+
+In the first graph below shows RSV cases weekly trend. Each dot represent one weekly PCR Detection number. It looks like the dots form a curve line with a peek in the end of 2021 and constantly rising at the end. It is not a linear distribution.
+
+```{r}
+library(readxl)
+data <- read_excel("C:/Data science courses/STA6257/Research project/RSV Data for the US.xlsx")
+View(RSV_Data_for_the_US)
+library(tidyverse)
+ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsNumerator))+geom_point()
+
+```
+
+The graph below with the percent of the positive cases in weekly PCR detection also show a similar curve line. While, it has a greater rise in the end of 2021.
+
+```{r}
+ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionPercent))+geom_point()
+
+```
+
+**3.3 Polynomial Regression Model Analysis**
+
+Data was split into train data and test data, and a comparision was made to decide which degree of model is the best fit.
+
+| Degree | Multiple R-square | MSE (error) |
+|--------|-------------------|-------------|
+| 1      | 0.2143            | 2198        |
+| 2      | 0.2144            | 2201        |
+| 3      | 0.4382            | 1719        |
+| 4      | 0.8054            | 802         |
+| 5      | 0.8083            | 781         |
+| 6      | 0.8156            | 752         |
+| 7      | 0.8441            | 701         |
+| 8      | 0.855             | 670         |
+| 9      | 0.8713            | 623         |
+| 10     | 0.9004            | 503         |
+|        |                   |             |
+
+```{r}
+install.packages("caret")
+install.packages("caTools")
+```
+
+```{r}
+library(caret)
+library(caTools)
+my_data<-data
+#split data into training and test
+set.seed(150)
+training.samples <-data$PCRDetectionsNumerator %>%
+  createDataPartition(p=0.8,list=FALSE)
+train.data<-my_data[training.samples, ]
+test.data<-my_data[-training.samples, ]
+#build model
+model<-lm(PCRDetectionsNumerator~poly(Week,4,raw=TRUE),data=train.data)
+summary(model)
+#predict using the model
+predictions<-model %>% predict(test.data)
+compare <-data.frame(actual=test.data$PCRDetectionsNumerator,predicted=predictions)
+#error
+error<-RMSE(predictions,test.data$PCRDetectionsNumerator)
+```
+
+Degree of 4 was selected based on relatively higher multiple r-square and lower error. Even through degree of 5 and up slightly increased the multiple r-square and decreased the lower error, it will overfit the training set and will be a poor fit for the cross validation set.
+
+**3.4 Model performance**
+
+P-value for each polynomial degree is less than 0.05 through t-test. There is significant evidence to reject the H0 and a model of PCRDetectionNumerator = 1450-429Week+26Week^2^ -0.46Week^3^ -0.0024Week^4^ is suggested.
+
+```{r}
+summary(model)
+```
+
+The line in the graph is generated based on our model. It is a good fit to predict the positive cases of Respiratory syncytial virus.
+
+```{r}
+# model performance
+modelPerformance=data.frame(RMSE=RMSE(predictions,test.data$PCRDetectionsNumerator),R2=R2(predictions,test.data$PCRDetectionsNumerator))
+ggplot(train.data,aes(Week,PCRDetectionsNumerator))+geom_point()+stat_smooth(method=lm,formula=y~poly(x,4,raw=TRUE))
+```

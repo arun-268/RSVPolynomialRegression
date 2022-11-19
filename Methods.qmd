@@ -4,7 +4,7 @@ Format: html
 editor: visual
 ---
 
-### **Clinical Laboratory Testing**
+## **Clinical Laboratory Testing**
 
 Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
 
@@ -21,3 +21,7 @@ Less commonly used tests include:
 -   Serology, which is usually only used for research and surveillance studies
 
 Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
+
+## *Why Ploynomial Regression?*
+
+In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.

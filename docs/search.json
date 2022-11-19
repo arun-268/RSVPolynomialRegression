@@ -1,8 +1,8 @@
 [
   {
-    "objectID": "Index.html",
-    "href": "Index.html",
-    "title": "Book on RSV Data Analysis Using Polynomial Regression",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
     "section": "",
     "text": "This is the book to highlight our proposal of new statistical regression tool, Polynomial Regression Model, to investigate the dynamic of RSV in USA.\nWe have seen a dramatic growth of RSV cases this year, but there are not any articles founded yet to give prediction of the RSV cases now. Based on the previous researches and the curve of RSV data this analysis has been carried out."
   },

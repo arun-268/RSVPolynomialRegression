@@ -1,11 +1,10 @@
 ---
 title: "Data Analysis and Results"
-author: "Arun Rajendran & Zhongyi Sun"
-date: "2022-11-13"
-image: "viralinf.jpg"
+format: html
+editor: visual
 ---
 
-#### Package Loaded:
+## Package Loaded:
 
 ```{r, echo=TRUE, warning=FALSE}
 library(readxl)
@@ -13,7 +12,7 @@ library(tidyverse)
 library(kableExtra)
 ```
 
-#### Load Dataset:
+## Load Dataset:
 
 ```{r}
 data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx")
@@ -24,7 +23,7 @@ data %>%
 
 ```
 
-#### Data Preprocessing
+## Data Preprocessing
 
 The first thing that we'll do in data preprocessing is to check for missing values.
 
@@ -34,7 +33,7 @@ colSums(is.na(data))
 
 Our dat does not have missing values, which is good. If theres is missing value, we have to decide to impute the data or exclude the obsevation.
 
-#### Removing outliers
+## Removing Outliers
 
 Let's now take a look at the distribution of our data by drawing boxplots.
 
@@ -62,7 +61,7 @@ data %>%
     )
 ```
 
-#### Data Distribution:
+## Data Distribution:
 
 ```{r}
 data %>% 

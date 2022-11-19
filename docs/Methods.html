@@ -198,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#clinical-laboratory-testing" id="toc-clinical-laboratory-testing" class="nav-link active" data-scroll-target="#clinical-laboratory-testing"><span class="toc-section-number">2.1</span>  <strong>Clinical Laboratory Testing</strong></a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link active" data-scroll-target="#data-collection"><span class="toc-section-number">2.1</span>  <strong>Data Collection</strong></a></li>
   <li><a href="#why-ploynomial-regression" id="toc-why-ploynomial-regression" class="nav-link" data-scroll-target="#why-ploynomial-regression"><span class="toc-section-number">2.2</span>  <em>Why Ploynomial Regression?</em></a></li>
   </ul>
 </nav>
@@ -222,8 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="clinical-laboratory-testing" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="clinical-laboratory-testing"><span class="header-section-number">2.1</span> <strong>Clinical Laboratory Testing</strong></h2>
+<section id="data-collection" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="data-collection"><span class="header-section-number">2.1</span> <strong>Data Collection</strong></h2>
 <p>Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.</p>
 <p>The most commonly used types of RSV clinical laboratory tests are</p>
 <ul>
@@ -236,6 +236,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Serology, which is usually only used for research and surveillance studies</p></li>
 </ul>
 <p>Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.</p>
+<p>Where we are retrieving the data? CDC</p>
+<p>CDC has several research and surveillance platforms that focus on seasonal trends, clinical risk factors, rates, and demographics of patients seeking care for RSV-associated illness.</p>
+<p>Participating laboratories report weekly to CDC the total number of RSV tests performed that week, and the number of those tests that were positive. Because reporting delays may be expected for some laboratories, data shown for the most recent weeks, in particular the most recent two weeks, may be less complete than others.</p>
+<ul>
+<li>Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html</li>
+</ul>
+<p>https://www.cdc.gov/rsv/research/index.html</p>
+<p>https://www.cdc.gov/surveillance/nrevss/index.html</p>
+<p>we can put 1)where we get the data, who and when and how people collect the data (from CDC web, they have descriptions) , data contains what part, what variables we are using (there are two tests here, for simplification, I think we can just use PCR test percent and numbers, otherwise we need to explain why those two tests results are might different. We can put two tests, just more work. What do you think) 2) what is polynomial, what formula it is, what the logics behind</p>
+<p>2020 Nov to till now.</p>
+<p><strong>Duration of the data collected?</strong></p>
+<p>Research and Surveillance Systems</p>
+<p><img src="images/paste-0A8E2CE6.png" class="img-fluid"></p>
+<p><img src="images/paste-06324783.png" class="img-fluid"></p>
 </section>
 <section id="why-ploynomial-regression" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="why-ploynomial-regression"><span class="header-section-number">2.2</span> <em>Why Ploynomial Regression?</em></h2>
@@ -414,7 +428,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Clinical Laboratory Testing**</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Data Collection**</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -432,9 +446,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## *Why Ploynomial Regression?*</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Where we are retrieving the data? CDC</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>CDC has several research and surveillance platforms that focus on seasonal trends, clinical risk factors, rates, and demographics of patients seeking care for RSV-associated illness.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Participating laboratories report weekly to CDC the total number of RSV tests performed that week, and the number of those tests that were positive. Because reporting delays may be expected for some laboratories, data shown for the most recent weeks, in particular the most recent two weeks, may be less complete than others.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>https://www.cdc.gov/rsv/research/index.html</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>https://www.cdc.gov/surveillance/nrevss/index.html</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>we can put 1)where we get the data, who and when and how people collect the data (from CDC web, they have descriptions) , data contains what part, what variables we are using (there are two tests here, for simplification, I think we can just use PCR test percent and numbers, otherwise we need to explain why those two tests results are might different. We can put two tests, just more work. What do you think) 2) what is polynomial, what formula it is, what the logics behind</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>2020 Nov to till now.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>**Duration of the data collected?**</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Research and Surveillance Systems</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-0A8E2CE6.png)</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-06324783.png)</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## *Why Ploynomial Regression?*</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

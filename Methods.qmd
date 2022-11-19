@@ -4,7 +4,7 @@ Format: html
 editor: visual
 ---
 
-## **Clinical Laboratory Testing**
+## **Data Collection**
 
 Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
 
@@ -21,6 +21,30 @@ Less commonly used tests include:
 -   Serology, which is usually only used for research and surveillance studies
 
 Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
+
+Where we are retrieving the data? CDC
+
+CDC has several research and surveillance platforms that focus on seasonal trends, clinical risk factors, rates, and demographics of patients seeking care for RSV-associated illness.
+
+Participating laboratories report weekly to CDC the total number of RSV tests performed that week, and the number of those tests that were positive. Because reporting delays may be expected for some laboratories, data shown for the most recent weeks, in particular the most recent two weeks, may be less complete than others.
+
+-   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html
+
+https://www.cdc.gov/rsv/research/index.html
+
+https://www.cdc.gov/surveillance/nrevss/index.html
+
+we can put 1)where we get the data, who and when and how people collect the data (from CDC web, they have descriptions) , data contains what part, what variables we are using (there are two tests here, for simplification, I think we can just use PCR test percent and numbers, otherwise we need to explain why those two tests results are might different. We can put two tests, just more work. What do you think) 2) what is polynomial, what formula it is, what the logics behind
+
+2020 Nov to till now.
+
+**Duration of the data collected?**
+
+Research and Surveillance Systems
+
+![](images/paste-0A8E2CE6.png)
+
+![](images/paste-06324783.png)
 
 ## *Why Ploynomial Regression?*
 

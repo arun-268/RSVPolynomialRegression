@@ -1,5 +1,5 @@
 ---
-title: "Data analysis"
+title: "Data analysis(Nina)"
 format: html
 editor: visual
 ---
@@ -20,9 +20,10 @@ In the first graph below shows RSV cases weekly trend. Each dot represent one we
 
 ```{r}
 library(readxl)
-data <- read_excel("C:/Data science courses/STA6257/Research project/RSV Data for the US.xlsx")
-View(RSV_Data_for_the_US)
+# data <- read_excel("C:/Data science courses/STA6257/Research project/RSV Data for the US.xlsx")
+# View(RSV_Data_for_the_US)
 library(tidyverse)
+data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/NinaCode/RSVProject/RSVproject2022/RSV Data for the US.xlsx")
 ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsNumerator))+geom_point()
 
 ```

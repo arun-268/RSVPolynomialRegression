@@ -44,16 +44,16 @@ data %>%
 ```
 
 ```{r}
-outlier_slag <- min(boxplot(data['PCRDetectionsnumerator'], plot = FALSE)$out)
+outlier_slag <- min(boxplot(data['PCRDetectionsNumerator'], plot = FALSE)$out)
 data.outliers <- data %>% 
-   filter(PCRDetectionsnumerator >= outlier_slag)
+   filter(PCRDetectionsNumerator >= outlier_slag)
 ```
 
 ```{r}
 data %>% 
-    ggplot(aes(x = RepWeekDate, y = PCRDetectionsnumerator)) +
+    ggplot(aes(x = RepWeekDate, y = PCRDetectionsNumerator)) +
     geom_point() + 
-    geom_point(data = data.outliers, aes(x = RepWeekDate, y = PCRDetectionsnumerator), col = 'red') + 
+    geom_point(data = data.outliers, aes(x = RepWeekDate, y = PCRDetectionsNumerator), col = 'red') + 
     labs(
         title = 'Distribution of strength : normal vs outlier (red)',
         x = 'RepWeekDate',
@@ -78,7 +78,7 @@ data %>%
 ```
 
 ```{r}
-ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsnumerator))+geom_smooth()
+ggplot(data=data,aes(x=RepWeekDate,y=PCRDetectionsNumerator))+geom_smooth()
 ```
 
 #### 

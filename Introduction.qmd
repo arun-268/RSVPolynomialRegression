@@ -1,10 +1,4 @@
-------------------------------------------------------------------------
-
----
-title: "Introduction"
-format: html
-editor: visual
----
+# Introduction
 
 **Polynomial Regression for CDC data with Application for Predicting RSV in USA**
 

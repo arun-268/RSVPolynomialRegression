@@ -4,62 +4,109 @@ Format: html
 editor: visual
 ---
 
-## **Data Collection**
-
-Clinical symptoms of RSV are nonspecific and can overlap with other viral respiratory infections, as well as some bacterial infections. Several types of laboratory tests are available for confirming RSV infection. These tests may be performed on upper and lower respiratory specimens.
-
-The most commonly used types of RSV clinical laboratory tests are
-
--   Real-time reverse transcriptase-polymerase chain reaction (rRT-PCR), which is more sensitive than culture and antigen testing
-
--   Antigen testing, which is highly sensitive in children but not sensitive in adults
-
-Less commonly used tests include:
-
--   Viral culture
-
--   Serology, which is usually only used for research and surveillance studies
-
-Some tests can differentiate between RSV subtypes (A and B), but the clinical significance of these subtypes is unclear.
-
-Where we are retrieving the data? CDC
+## Data Collection
 
 CDC has several research and surveillance platforms that focus on seasonal trends, clinical risk factors, rates, and demographics of patients seeking care for RSV-associated illness.
 
-Participating laboratories report weekly to CDC the total number of RSV tests performed that week, and the number of those tests that were positive. Because reporting delays may be expected for some laboratories, data shown for the most recent weeks, in particular the most recent two weeks, may be less complete than others.
+Of the other available datasets, we preferred **RSV Hospitalization Surveillance Network (RSV-NET)** . It is a network that conducts population-based surveillance system for laboratory-confirmed COVID-19, RSV, and influenza-associated hospitalizations in the US among children younger than 18 years of age and adults.
 
--   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html
+Data are collected and reported from a network of sites in acute-care hospitals across 58 counties in 12 states during the October 1--April 30 season each year. RSV-NET covers almost 9% of the U.S. population.
 
-https://www.cdc.gov/rsv/research/index.html
+## **Why RSV-NET Data are Important**
 
-https://www.cdc.gov/surveillance/nrevss/index.html
+RSV-NET is a population-based surveillance system. Population-based surveillance is the active collection, analysis, and interpretation of data on a population in a specified geographic area. Tracking RSV-associated hospitalization rates helps public health professionals understand trends in virus circulation, estimate disease burden, and respond to outbreaks. Hospitalization rates show how many people in the surveillance area are hospitalized with RSV, compared to the total number of people residing in that area.
 
-we can put 1)where we get the data, who and when and how people collect the data (from CDC web, they have descriptions) , data contains what part, what variables we are using (there are two tests here, for simplification, I think we can just use PCR test percent and numbers, otherwise we need to explain why those two tests results are might different. We can put two tests, just more work. What do you think) 2) what is polynomial, what formula it is, what the logics behind
+## About this Dataset
 
-2020 Nov to till now.
+![](images/paste-8FF52AAE.png)
 
-**Duration of the data collected?**
+### How an entry is made in dataset
 
-Research and Surveillance Systems
+A case is defined by laboratory-confirmed RSV in a person who:
 
-![](images/paste-0A8E2CE6.png)
+-   Lives in a defined RSV-NET surveillance area AND
 
-![](images/paste-06324783.png)
+-   Tests positive for RSV within 14 days before or during hospitalization.
 
-## *Why Ploynomial Regression?*
+Evidence of RSV infection can be obtained through several laboratory tests:
+
+-   Molecular assays, such as reverse transcription polymerase chain reaction (RT-PCR)
+
+-   Commercially available rapid antigen detection tests
+
+-   Serology tests, or antibody tests (must be paired acute and convalescent specimens)
+
+-   Immunofluorescence antibody staining, including direct (DFA) and indirect (IFA) fluorescent antibody tests
+
+-   Viral culture
+
+### **Calculating Hospitalization Rates**
+
+To calculate RSV-associated hospitalization rates, RSV-NET collects the following data from identified cases:
+
+-   Age
+
+-   Sex
+
+-   Race and ethnicity
+
+-   County of residence
+
+-   Date of hospital admission
+
+-   Date of RSV test
+
+-   Positive RSV test result
+
+Hospitalization rates are calculated as the number of residents in a surveillance area who are hospitalized with laboratory-confirmed RSV divided by the total population estimate for that area. [NCHS bridged-race population](https://www.cdc.gov/nchs/nvss/bridged_race.htm) estimates are used as denominators for rate calculations.
+
+The table below summarizes changes in surveillance populations and collection of clinical data by surveillance year. Because the surveillance areas and age groups included in surveillance have changed over time, trends should be interpreted with caution (see table below).
+
+![](images/paste-72BAB924.png)
+
+### **What's in this Dataset?**
+
+Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table
+
+| Column Name  | Description                                                                                                                                                                                                                 |
+|----------------|--------------------------------------------------------|
+| State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                        |
+| MMWR Year    | Represents Year                                                                                                                                                                                                             |
+| MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                          |
+| Season       | As the data is collected between October to April, this represents the duration of the year.                                                                                                                                |
+| Age Category | Age limit                                                                                                                                                                                                                   |
+| Sex          | Male/Female                                                                                                                                                                                                                 |
+| Race         | Black, White, American Indian/Alaska Native and Asian/Pacific Islander people are categorized as non-Hispanic. Hispanic people could be of any race. If Hispanic ethnicity was unknown, non-Hispanic ethnicity was assumed. |
+| Rate         | Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates.                           
+                Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV             |
+
+**Columns Considered:**
+
+Of the other available column values we have considered columns "**MMWR Week**" & "**Rate**" for our model. The data was last updated on **17th November 2022**. We have considered last 12 months of YTD data for our calculations.
+
+## Methods
+
+### *Why Ploynomial Regression?*
 
 In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.
 
-\- index.qmd
+**Note Replace with graph with new data.**
 
- - Introduction.qmd
+![](images/paste-73DF7630.png)
 
- - Methods.qmd
+### **How Polynomial Regression Overcomes the problem of Non-Linear data?**
 
- - Data Analysis.qmd
+Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.
 
- - data analysis and result.qmd
+Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree.
 
- - References.qmd
+Consider an example my input value is 35 and the degree of a polynomial is 2 so I will find 35 power 0, 35 power 1, and 35 power 2 And this helps to interpret the non-linear relationship in data.\
+The equation of polynomial becomes something like this.
 
- - about.qmd
+**y = a~0~ + a~1~x~1~ + a~2~x~1~^2^ + ... + a~n~x~1~^n^**
+
+The degree of order which to use is a Hyperparameter, and we need to choose it wisely. But using a high degree of polynomial tries to overfit the data and for smaller values of degree, the model tries to underfit so we need to find the optimum value of a degree.
+
+If you see the equation of polynomial regression carefully, then we can see that we are trying to estimate the relationship between coefficients and y. And the values of x and y are already given to us, only we need to determine coefficients and the degree of coefficient here is 1 only, and degree one represents simple linear regression Hence, Polynomial regression is also known as polynomial Linear regression.
+
+Polynomial Regression is a form of Linear regression known as a special case of Multiple linear regression which estimates the relationship as an nth degree polynomial. Polynomial Regression is sensitive to outliers so the presence of one or two outliers can also badly affect the performance.

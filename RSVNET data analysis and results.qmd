@@ -1,0 +1,240 @@
+---
+title: "RSVNET data analysis and results"
+editor: visual
+---
+
+## 3. Data Analysis and Results
+
+In this part, a model to predict RSV hospitalization rate is trying to be established. The question is what range of data we should be included to better predict the RSV rate, one year, or two year. This question will be solved in this part.
+
+Before that, the data distribution of RSV hospitalization rates from 2018 to now is displayed below.
+
+```{r}
+#load data
+library(tidyverse)
+library(readxl)
+data <- read_excel("C:/Data science courses/STA6257/Research project/RSVNET weekly rate 1422.xlsx")
+ggplot()+
+  geom_line(data=data,aes(x=Week,y=year1819),color="orange")+geom_point(data=data,aes(x=Week,y=year1819),color="orange")+
+  geom_line(data=data,aes(x=Week,y=year1920),color="green")+geom_point(data=data,aes(x=Week,y=year1920),color="green")+
+  geom_line(data=data,aes(x=Week,y=year2021),color="pink")+geom_point(data=data,aes(x=Week,y=year2021),color="pink")+
+  geom_line(data=data,aes(x=Week,y=year2122),color="purple")+geom_point(data=data,aes(x=Week,y=year2122),color="purple")+
+  geom_line(data=data,aes(x=Week,y=year2223),color="brown")+geom_point(data=data,aes(x=Week,y=year2223),color="brown")+
+  labs(x="RSV-NET Week (2018-2023)",y="Rates",title="Rates of RSV-Associated Hospitalization")
+```
+
+##### Note: (1) color orange: year 2018-2019; color green: year 2019-2020; color pink: year 2020-2021; color purple: 2021-2022; color brown: 2022-2023
+
+##### (2)In 2018-2020, data shown is from October 1 to April 30 each year; In 2020-now, data is from October 1 to the next year October 1 each year.
+
+##### (3)In year 2020-2021, because of Covid restriction and mask mandate, there are fewer cases.
+
+From the graph below, we notice that data is not linear distributed, and curved lines are noticed. So, polynomial regression is selected to be our approach.
+
+### 3.1 One year-to-date data Analysis
+
+A model built for 1 year-to date data follows the following steps.
+
+**3.1.1 Data Pre-processing and Distribution**
+
+Data was examined before our modeling, including checking for missing values and removing outlines.
+
+```{r}
+#load data
+library(tidyverse)
+library(readxl)
+data1 <- read_excel("C:/Data science courses/STA6257/Research project/oneyeartodate data.xlsx")
+#checking missing data
+colSums(is.na(data1))
+
+```
+
+One-year-to-date data distribution with a curve line was shown below. We can see that the straight line is unable to capture the patterns in the data. Data is being under-fitting.
+
+```{r}
+ggplot(data1,aes(x=Week,y=oneyeartodate))+geom_point(data=data1,aes(x=Week,y=oneyeartodate),color="blue")+stat_smooth(method=lm,formula=y~poly(x,1,raw=TRUE))+
+  labs(x="RSV-NET week Week 46th,2021-Week 45th,2022",y="Rates",title="Rates of RSV-Associated Hospitalization One year-to-date")
+```
+
+**3.1.2 Polynomial Regression and results**
+
+To overcome under-fitting, we generate a higher order equation to increase the complexity of the model. To do that, we add powers of the original features as new features through polynomial regression analysis. Data was split into train data and test data, and a comparision was made to decide which degree of model is the best fit for the data from Nov 2021 to Nov 2022.
+
+| Degree | Multiple R-square | MSE (error) |
+|--------|-------------------|-------------|
+| 1      | 0.1869            | 0.72        |
+| 2      | 0.811             | 0.39        |
+| 3      | 0.8763            | 0.26        |
+| 4      | 0.9501            | 0.48        |
+| 5      | 0.9548            | 0.33        |
+| **6**  | **0.9606**        | **0.16**    |
+| 7      | 0.9638            | 0.31        |
+| 8      | 0.9844            | 0.67        |
+
+```{r}
+library(caret)
+
+library(caTools)
+
+my_data<-data1
+
+#split data into training and test
+
+set.seed(150)
+
+training.samples <-data1$oneyeartodate %>%
+
+  createDataPartition(p=0.8,list=FALSE)
+
+train.data<-my_data[training.samples, ]
+
+test.data<-my_data[-training.samples, ]
+
+#build model
+
+model<-lm(oneyeartodate~poly(Week,6,raw=TRUE),data=train.data)
+
+summary(model)
+
+#predict using the model
+
+predictions<-model %>% predict(test.data)
+
+#error
+
+error<-RMSE(predictions,test.data$oneyeartodate)
+```
+
+We listed the Multiple R-squared and root mean square error (RMSE, or error) when the degree of polynomials from 1 to 10. We can observe with the increase of the degree, multiple r-square increase too. While error goes down and then goes up again when we keep adding the powers of the original features. That incease of the error is caused by data overfitting, the model try to pass through most of the data points.
+
+The best model we looking for is the one with high multiple R square (0.9606) and low RMSE (0.16), so we select the model with degree of 6.
+
+### 3.2 Two year-to-date data Analysis
+
+We also analysis the date from Nov, 2020 to Nov, 2022 following the same steps, and try to see if including more data points will get a better prediction model.
+
+**3.2.1 Data Pre-processing and Distribution**
+
+Two-year-to-date data distribution with a curve line was shown below. Data is under fitted, polynomial regression is needed to increase the complexity of the model.
+
+```{r}
+#load data
+library(tidyverse)
+library(readxl)
+data2 <- read_excel("C:/Data science courses/STA6257/Research project/twoyeartodate.xlsx")
+#checking missing data
+colSums(is.na(data2))
+
+```
+
+```{r}
+ggplot(data2,aes(x=Week,y=twoyeartodate))+geom_point(data=data2,aes(x=Week,y=twoyeartodate),color="purple")+stat_smooth(method=lm,formula=y~poly(x,1,raw=TRUE))+
+  labs(x="RSV-NET week Week 46th,2020-Week 45th,2022",y="Rates",title="Rates of RSV-Associated Hospitalization two year-to-date")
+```
+
+**3.2.2 Polynomial Regression and results**
+
+The best model for the most recent two year data we select is at the degree of 5 with multiple r-square 0.92 and error 0.24.
+
+| Degree | Multiple R-square | MSE (error) |
+|--------|-------------------|-------------|
+| 1      | 0.2728            | 0.50        |
+| 2      | 0.312             | 0.56        |
+| 3      | 0.5748            | 0.45        |
+| 4      | 0.8981            | 0.22        |
+| **5**  | **0.92**          | **0.24**    |
+| 6      | 0.92              | 0.25        |
+| 7      | 0.9372            | 0.21        |
+| 8      | 0.9448            | 0.18        |
+
+```{r}
+library(caret)
+
+library(caTools)
+
+my_data2<-data2
+
+#split data into training and test
+
+set.seed(150)
+
+training.samples <-data2$twoyeartodate %>%
+
+  createDataPartition(p=0.8,list=FALSE)
+
+train.data2<-my_data2[training.samples, ]
+
+test.data2<-my_data2[-training.samples, ]
+
+#build model
+
+model2<-lm(twoyeartodate~poly(Week,5,raw=TRUE),data=train.data2)
+
+summary(model2)
+
+#predict using the model
+
+predictions2<-model2 %>% predict(test.data2)
+
+#error
+
+error<-RMSE(predictions2,test.data2$twoyeartodate)
+```
+
+|                       |                   |             |
+|-----------------------|-------------------|-------------|
+| The best model        | Multiple R-square | MSE (error) |
+| Two year-to-date data | **0.92**          | **0.24**    |
+| One year-to-date data | **0.9606**        | **0.16**    |
+
+By comparison the two year-to-date data with the one year-to-date data, it shows that building RSV hospitalization rate model containing most recent one year data create the best prediction model.
+
+### **3.3 Model performance**
+
+The model for RSV hospitalization rate from Nov, 2021 to Nov, 2022 was formed as:
+
+**RSV Hospitalization Rate = 0.917 + 0.312Week - 0.074Week^2^ + 0.0054Week^3^ - 0.00018Week^4^ + 0.0000027Week^5^ - 0.000000015Week^6^**
+
+```{r}
+coef(summary(model))
+
+```
+
+When we compare the actual hospitalization with the predicted value from our model, we can get the numbers as follow. We can conclude that the model created is a good fit. It also can be shown at the graph below.
+
+```{r}
+compare <-data.frame(actual=test.data$oneyeartodate,predicted=predictions)
+head(compare,n=10)
+```
+
+```{r}
+modelPerformance=data.frame(RMSE=RMSE(predictions,test.data$oneyeartodate),R2=R2(predictions,test.data$oneyeartodate))
+ggplot(train.data,aes(Week,oneyeartodate))+geom_point()+stat_smooth(method=lm,formula=y~poly(x,6,raw=TRUE))
+```
+
+### **3.4 Predict** the future value
+
+We have got our model with the equation for the RSV hospitalization rate data in the recent one year: **RSV Hospitalization Rate = 0.917 + 0.312Week - 0.074Week^2^ + 0.0054Week^3^ - 0.00018Week^4^ + 0.0000027Week^5^ - 0.000000015Week^6^**
+
+On the ground of this model, we predicted the future RSV hospitalization rates in the next three months. A table is listed below to show the trend. Following the trend in our model, rates keep going up and a rate of 9 could be reached at the beginning of next year.
+
+```{r}
+newcases <- data.frame(Week = c(53,54,55,56,57,58,59,60,61,62,63,64))
+predict(model,newcases)
+
+```
+
+| Week         | Actual date           | Rates |
+|--------------|-----------------------|-------|
+| 1: 46th week | 11/14/2022-11/20/2022 | 4.74  |
+| 2: 47th week | 11/21/2022-11/27/2022 | 5.36  |
+| 3: 48th week | 11/28/2022-12/4/2022  | 5.98  |
+| 4: 49th week | 12/5/2022-12/22/2022  | 6.61  |
+| 5: 50th week | 12/12/2022-12/18/2022 | 7.21  |
+| 6: 51th week | 12/19/2022-12/25/2022 | 7.78  |
+| 7: 52th week | 12/26/2022-1/1/2023   | 8.28  |
+| 8: 1st week  | 1/2/2023-1/8/2023     | 8.69  |
+| 9: 2nd week  | 1/9/2023-1/15/2023    | 8.97  |
+| 10: 3rd week | 1/16/2023-1/22/2023   | 9.10  |
+| 11: 4th week | 1/23/2023-1/29/2023   | 9.01  |
+| 12: 5th week | 1/30/2023-2/5/2023    | 8.68  |

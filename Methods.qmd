@@ -12,7 +12,7 @@ Of the other available datasets, we preferred **RSV Hospitalization Surveillance
 
 Data are collected and reported from a network of sites in acute-care hospitals across 58 counties in 12 states during the October 1--April 30 season each year. RSV-NET covers almost 9% of the U.S. population.
 
-## **Why RSV-NET Data are Important**
+## Why RSV-NET Data are Important
 
 RSV-NET is a population-based surveillance system. Population-based surveillance is the active collection, analysis, and interpretation of data on a population in a specified geographic area. Tracking RSV-associated hospitalization rates helps public health professionals understand trends in virus circulation, estimate disease burden, and respond to outbreaks. Hospitalization rates show how many people in the surveillance area are hospitalized with RSV, compared to the total number of people residing in that area.
 
@@ -64,21 +64,20 @@ The table below summarizes changes in surveillance populations and collection of
 
 ![](images/paste-72BAB924.png)
 
-### **What's in this Dataset?**
+### What's in this Dataset?
 
 Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table
 
-| Column Name  | Description                                                                                                                                                                                                                 |
+| Column Name  | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
 |----------------|--------------------------------------------------------|
-| State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                        |
-| MMWR Year    | Represents Year                                                                                                                                                                                                             |
-| MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                          |
-| Season       | As the data is collected between October to April, this represents the duration of the year.                                                                                                                                |
-| Age Category | Age limit                                                                                                                                                                                                                   |
-| Sex          | Male/Female                                                                                                                                                                                                                 |
-| Race         | Black, White, American Indian/Alaska Native and Asian/Pacific Islander people are categorized as non-Hispanic. Hispanic people could be of any race. If Hispanic ethnicity was unknown, non-Hispanic ethnicity was assumed. |
-| Rate         | Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates.                           
-                Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV             |
+| State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                                                                                                                                                                                                               |
+| MMWR Year    | Represents Year                                                                                                                                                                                                                                                                                                                                                                                                    |
+| MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                                                                                                                                                                                                                 |
+| Season       | As the data is collected between October to April, this represents the duration of the year.                                                                                                                                                                                                                                                                                                                       |
+| Age Category | Age limit                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Sex          | Male/Female                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Race         | Black, White, American Indian/Alaska Native and Asian/Pacific Islander people are categorized as non-Hispanic. Hispanic people could be of any race. If Hispanic ethnicity was unknown, non-Hispanic ethnicity was assumed.                                                                                                                                                                                        |
+| Rate         | Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates. Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV |
 
 **Columns Considered:**
 
@@ -90,7 +89,7 @@ Of the other available column values we have considered columns "**MMWR Week**" 
 
 In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.
 
-**Note Replace with graph with new data.**
+**Note Replace the graph with new data.**
 
 ![](images/paste-73DF7630.png)
 

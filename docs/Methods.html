@@ -192,12 +192,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#data-collection" id="toc-data-collection" class="nav-link active" data-scroll-target="#data-collection"><span class="toc-section-number">2.1</span>  Data Collection</a></li>
-  <li><a href="#why-rsv-net-data-are-important" id="toc-why-rsv-net-data-are-important" class="nav-link" data-scroll-target="#why-rsv-net-data-are-important"><span class="toc-section-number">2.2</span>  <strong>Why RSV-NET Data are Important</strong></a></li>
+  <li><a href="#why-rsv-net-data-are-important" id="toc-why-rsv-net-data-are-important" class="nav-link" data-scroll-target="#why-rsv-net-data-are-important"><span class="toc-section-number">2.2</span>  Why RSV-NET Data are Important</a></li>
   <li><a href="#about-this-dataset" id="toc-about-this-dataset" class="nav-link" data-scroll-target="#about-this-dataset"><span class="toc-section-number">2.3</span>  About this Dataset</a>
   <ul class="collapse">
   <li><a href="#how-an-entry-is-made-in-dataset" id="toc-how-an-entry-is-made-in-dataset" class="nav-link" data-scroll-target="#how-an-entry-is-made-in-dataset"><span class="toc-section-number">2.3.1</span>  How an entry is made in dataset</a></li>
   <li><a href="#calculating-hospitalization-rates" id="toc-calculating-hospitalization-rates" class="nav-link" data-scroll-target="#calculating-hospitalization-rates"><span class="toc-section-number">2.3.2</span>  <strong>Calculating Hospitalization Rates</strong></a></li>
-  <li><a href="#whats-in-this-dataset" id="toc-whats-in-this-dataset" class="nav-link" data-scroll-target="#whats-in-this-dataset"><span class="toc-section-number">2.3.3</span>  <strong>What’s in this Dataset?</strong></a></li>
+  <li><a href="#whats-in-this-dataset" id="toc-whats-in-this-dataset" class="nav-link" data-scroll-target="#whats-in-this-dataset"><span class="toc-section-number">2.3.3</span>  What’s in this Dataset?</a></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">2.4</span>  Methods</a>
   <ul class="collapse">
@@ -233,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Data are collected and reported from a network of sites in acute-care hospitals across 58 counties in 12 states during the October 1–April 30 season each year. RSV-NET covers almost 9% of the U.S. population.</p>
 </section>
 <section id="why-rsv-net-data-are-important" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="why-rsv-net-data-are-important"><span class="header-section-number">2.2</span> <strong>Why RSV-NET Data are Important</strong></h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="why-rsv-net-data-are-important"><span class="header-section-number">2.2</span> Why RSV-NET Data are Important</h2>
 <p>RSV-NET is a population-based surveillance system. Population-based surveillance is the active collection, analysis, and interpretation of data on a population in a specified geographic area. Tracking RSV-associated hospitalization rates helps public health professionals understand trends in virus circulation, estimate disease burden, and respond to outbreaks. Hospitalization rates show how many people in the surveillance area are hospitalized with RSV, compared to the total number of people residing in that area.</p>
 </section>
 <section id="about-this-dataset" class="level2" data-number="2.3">
@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="images/paste-72BAB924.png" class="img-fluid"></p>
 </section>
 <section id="whats-in-this-dataset" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="whats-in-this-dataset"><span class="header-section-number">2.3.3</span> <strong>What’s in this Dataset?</strong></h3>
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="whats-in-this-dataset"><span class="header-section-number">2.3.3</span> What’s in this Dataset?</h3>
 <p>Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table</p>
 <table class="table">
 <colgroup>
@@ -316,11 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td>Rate</td>
-<td>Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates.&nbsp;</td>
-</tr>
-<tr class="odd">
-<td>Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV</td>
-<td></td>
+<td>Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates. Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV</td>
 </tr>
 </tbody>
 </table>
@@ -333,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="why-ploynomial-regression" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="why-ploynomial-regression"><span class="header-section-number">2.4.1</span> <em>Why Ploynomial Regression?</em></h3>
 <p>In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.</p>
-<p><strong>Note Replace with graph with new data.</strong></p>
+<p><strong>Note Replace the graph with new data.</strong></p>
 <p><img src="images/paste-73DF7630.png" class="img-fluid"></p>
 </section>
 <section id="how-polynomial-regression-overcomes-the-problem-of-non-linear-data" class="level3" data-number="2.4.2">
@@ -529,7 +525,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Data are collected and reported from a network of sites in acute-care hospitals across 58 counties in 12 states during the October 1--April 30 season each year. RSV-NET covers almost 9% of the U.S. population.</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Why RSV-NET Data are Important**</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why RSV-NET Data are Important</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>RSV-NET is a population-based surveillance system. Population-based surveillance is the active collection, analysis, and interpretation of data on a population in a specified geographic area. Tracking RSV-associated hospitalization rates helps public health professionals understand trends in virus circulation, estimate disease burden, and respond to outbreaks. Hospitalization rates show how many people in the surveillance area are hospitalized with RSV, compared to the total number of people residing in that area.</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
@@ -581,52 +577,51 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-72BAB924.png)</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### **What's in this Dataset?**</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### What's in this Dataset?</span></span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table</span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>| Column Name  | Description                                                                                                                                                                                                                 |</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>| Column Name  | Description                                                                                                                                                                                                                                                                                                                                                                                                        |</span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>|----------------|--------------------------------------------------------|</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>| State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                        |</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>| MMWR Year    | Represents Year                                                                                                                                                                                                             |</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>| MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                          |</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>| Season       | As the data is collected between October to April, this represents the duration of the year.                                                                                                                                |</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>| Age Category | Age limit                                                                                                                                                                                                                   |</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>| Sex          | Male/Female                                                                                                                                                                                                                 |</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>| Race         | Black, White, American Indian/Alaska Native and Asian/Pacific Islander people are categorized as non-Hispanic. Hispanic people could be of any race. If Hispanic ethnicity was unknown, non-Hispanic ethnicity was assumed. |</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>| Rate         | Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates.&nbsp;                          </span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>                Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV             |</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>**Columns Considered:**</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>Of the other available column values we have considered columns "**MMWR Week**" &amp; "**Rate**" for our model. The data was last updated on **17th November 2022**. We have considered last 12 months of YTD data for our calculations.</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="fu">### *Why Ploynomial Regression?*</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>**Note Replace with graph with new data.**</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-73DF7630.png)</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### **How Polynomial Regression Overcomes the problem of Non-Linear data?**</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree.</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>Consider an example my input value is 35 and the degree of a polynomial is 2 so I will find 35 power 0, 35 power 1, and 35 power 2 And this helps to interpret the non-linear relationship in data.\</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>The equation of polynomial becomes something like this.</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>**y = a~0~ + a~1~x~1~ + a~2~x~1~^2^ + ... + a~n~x~1~^n^**</span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>The degree of order which to use is a Hyperparameter, and we need to choose it wisely. But using a high degree of polynomial tries to overfit the data and for smaller values of degree, the model tries to underfit so we need to find the optimum value of a degree.</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>If you see the equation of polynomial regression carefully, then we can see that we are trying to estimate the relationship between coefficients and y. And the values of x and y are already given to us, only we need to determine coefficients and the degree of coefficient here is 1 only, and degree one represents simple linear regression Hence, Polynomial regression is also known as polynomial Linear regression.</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>Polynomial Regression is a form of Linear regression known as a special case of Multiple linear regression which estimates the relationship as an nth degree polynomial. Polynomial Regression is sensitive to outliers so the presence of one or two outliers can also badly affect the performance.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>| State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                                                                                                                                                                                                               |</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>| MMWR Year    | Represents Year                                                                                                                                                                                                                                                                                                                                                                                                    |</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>| MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                                                                                                                                                                                                                 |</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>| Season       | As the data is collected between October to April, this represents the duration of the year.                                                                                                                                                                                                                                                                                                                       |</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>| Age Category | Age limit                                                                                                                                                                                                                                                                                                                                                                                                          |</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>| Sex          | Male/Female                                                                                                                                                                                                                                                                                                                                                                                                        |</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>| Race         | Black, White, American Indian/Alaska Native and Asian/Pacific Islander people are categorized as non-Hispanic. Hispanic people could be of any race. If Hispanic ethnicity was unknown, non-Hispanic ethnicity was assumed.                                                                                                                                                                                        |</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>| Rate         | Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates. Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV |</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>**Columns Considered:**</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>Of the other available column values we have considered columns "**MMWR Week**" &amp; "**Rate**" for our model. The data was last updated on **17th November 2022**. We have considered last 12 months of YTD data for our calculations.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### *Why Ploynomial Regression?*</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>**Note Replace the graph with new data.**</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-73DF7630.png)</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### **How Polynomial Regression Overcomes the problem of Non-Linear data?**</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree.</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>Consider an example my input value is 35 and the degree of a polynomial is 2 so I will find 35 power 0, 35 power 1, and 35 power 2 And this helps to interpret the non-linear relationship in data.\</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>The equation of polynomial becomes something like this.</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>**y = a~0~ + a~1~x~1~ + a~2~x~1~^2^ + ... + a~n~x~1~^n^**</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>The degree of order which to use is a Hyperparameter, and we need to choose it wisely. But using a high degree of polynomial tries to overfit the data and for smaller values of degree, the model tries to underfit so we need to find the optimum value of a degree.</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>If you see the equation of polynomial regression carefully, then we can see that we are trying to estimate the relationship between coefficients and y. And the values of x and y are already given to us, only we need to determine coefficients and the degree of coefficient here is 1 only, and degree one represents simple linear regression Hence, Polynomial regression is also known as polynomial Linear regression.</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>Polynomial Regression is a form of Linear regression known as a special case of Multiple linear regression which estimates the relationship as an nth degree polynomial. Polynomial Regression is sensitive to outliers so the presence of one or two outliers can also badly affect the performance.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

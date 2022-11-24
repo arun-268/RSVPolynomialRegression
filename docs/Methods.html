@@ -288,8 +288,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table</p>
 <table class="table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -348,11 +348,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="how-polynomial-regression-overcomes-the-problem-of-non-linear-data" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="how-polynomial-regression-overcomes-the-problem-of-non-linear-data"><span class="header-section-number">2.4.2</span> <strong>How Polynomial Regression Overcomes the problem of Non-Linear data?</strong></h3>
-<p>[9]Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.</p>
+<p>Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.</p>
 <p>Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree.</p>
 <p>Consider an example my input value is 35 and the degree of a polynomial is 2 so I will find 35 power 0, 35 power 1, and 35 power 2 And this helps to interpret the non-linear relationship in data.<br>
-The equation of polynomial becomes something like this.</p>
-<p><strong>y = a<sub>0</sub> + a<sub>1</sub>x<sub>1</sub> + a<sub>2</sub>x<sub>1</sub><sup>2</sup> + … + a<sub>n</sub>x<sub>1</sub><sup>n</sup></strong></p>
+The equation of polynomial becomes something like this.<sup>[9]</sup></p>
+<p><strong>y = 𝛽<sub>0</sub> + 𝛽<sub>1</sub>x<sub>1</sub> + 𝛽<sub>2</sub>x<sub>1</sub><sup>2</sup> + … + 𝛽<sub>n</sub>x<sub>1</sub><sup>n</sup></strong></p>
 <p>The degree of order which to use is a Hyper-parameter, and we need to choose it wisely. But using a high degree of polynomial tries to over-fit the data and for smaller values of degree, the model tries to under-fit so we need to find the optimum value of a degree.</p>
 <p>If you see the equation of polynomial regression carefully, then we can see that we are trying to estimate the relationship between coefficients and y. And the values of x and y are already given to us, only we need to determine coefficients and the degree of coefficient here is 1 only, and degree one represents simple linear regression Hence, Polynomial regression is also known as polynomial Linear regression.</p>
 <p>Polynomial Regression is a form of Linear regression known as a special case of Multiple linear regression which estimates the relationship as an nth degree polynomial. Polynomial Regression is sensitive to Outliers so the presence of one or two Outliers can also badly affect the performance.</p>
@@ -596,7 +596,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table</span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>| Column Name  | Description                                                                                                                                                                                                                                                                                                                                                                                                        |</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>|--------------------|----------------------------------------------------|</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>|---------------------|---------------------------------------------------|</span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>| State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                                                                                                                                                                                                               |</span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>| MMWR Year    | Represents Year                                                                                                                                                                                                                                                                                                                                                                                                    |</span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>| MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                                                                                                                                                                                                                 |</span>
@@ -626,14 +626,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### **How Polynomial Regression Overcomes the problem of Non-Linear data?**</span></span>
 <span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span>9<span class="sc">\]</span>Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.</span>
 <span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree.</span>
 <span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>Consider an example my input value is 35 and the degree of a polynomial is 2 so I will find 35 power 0, 35 power 1, and 35 power 2 And this helps to interpret the non-linear relationship in data.\</span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>The equation of polynomial becomes something like this.</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>The equation of polynomial becomes something like this.^<span class="sc">\[</span>9<span class="sc">\]</span>^</span>
 <span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>**y = a~0~ + a~1~x~1~ + a~2~x~1~^2^ + ... + a~n~x~1~^n^**</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>**y = 𝛽~0~ + 𝛽~1~x~1~ + 𝛽~2~x~1~^2^ + ... + 𝛽~n~x~1~^n^**</span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>The degree of order which to use is a Hyper-parameter, and we need to choose it wisely. But using a high degree of polynomial tries to over-fit the data and for smaller values of degree, the model tries to under-fit so we need to find the optimum value of a degree.</span>
 <span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>

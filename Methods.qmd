@@ -69,7 +69,7 @@ The table below summarizes changes in surveillance populations and collection of
 Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table
 
 | Column Name  | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
-|-------------------|-----------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                                                                                                                                                                                                               |
 | MMWR Year    | Represents Year                                                                                                                                                                                                                                                                                                                                                                                                    |
 | MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                                                                                                                                                                                                                 |
@@ -99,7 +99,7 @@ In simple linear regression algorithm only works when the relationship between t
 
 ### **How Polynomial Regression Overcomes the problem of Non-Linear data?**
 
-Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.
+\[9\]Polynomial regression is a form of Linear regression where only due to the Non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.
 
 Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree.
 

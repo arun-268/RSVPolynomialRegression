@@ -19,6 +19,8 @@ editor: visual
 
 \[8\] Modeling the variations in pediatric respiratory syncytial virus seasonal epidemics, Leecaster, Molly ; Gesteland, Per ; Greene, Tom ; Walton, Nephi ; Gundlapalli, Adi ; Rolfs, Robert ; Byington, Carrie ; Samore, Matthew BMC infectious diseases, 2011, Vol.11 (1), p.105-105
 
+\[9\]https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/#:\~:text=Polynomial%20Regression%20is%20a%20form%20of%20Linear%20regression%20known%20as,also%20badly%20affect%20the%20performance
+
 -   Posting Github website: https://www.youtube.com/watch?v=YoKjBcuUP0s
 
 -   Data : https://www.cdc.gov/surveillance/nrevss/rsv/natl-trend.html

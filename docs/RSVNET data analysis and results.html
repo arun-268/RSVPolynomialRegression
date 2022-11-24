@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Polynomial Regression - 3&nbsp; Data Analysis and Results</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./conclusion.html" rel="next">
+<link href="./Methods.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Polynomial Regression</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methodology</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RSVNET data analysis and results.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./References.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">About this blog</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#one-year-to-date-data-analysis" id="toc-one-year-to-date-data-analysis" class="nav-link active" data-scroll-target="#one-year-to-date-data-analysis"><span class="toc-section-number">3.1</span>  One year-to-date data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#data-pre-processing-and-distribution" id="toc-data-pre-processing-and-distribution" class="nav-link" data-scroll-target="#data-pre-processing-and-distribution"><span class="toc-section-number">3.1.1</span>  Data Pre-processing and Distribution</a></li>
+  <li><a href="#polynomial-regression-and-results" id="toc-polynomial-regression-and-results" class="nav-link" data-scroll-target="#polynomial-regression-and-results"><span class="toc-section-number">3.1.2</span>  Polynomial Regression and results</a></li>
+  </ul></li>
+  <li><a href="#two-year-to-date-data-analysis" id="toc-two-year-to-date-data-analysis" class="nav-link" data-scroll-target="#two-year-to-date-data-analysis"><span class="toc-section-number">3.2</span>  Two year-to-date data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#data-pre-processing-and-distribution-1" id="toc-data-pre-processing-and-distribution-1" class="nav-link" data-scroll-target="#data-pre-processing-and-distribution-1"><span class="toc-section-number">3.2.1</span>  Data Pre-processing and Distribution</a></li>
+  <li><a href="#polynomial-regression-and-results-1" id="toc-polynomial-regression-and-results-1" class="nav-link" data-scroll-target="#polynomial-regression-and-results-1"><span class="toc-section-number">3.2.2</span>  Polynomial Regression and results</a></li>
+  </ul></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="toc-section-number">3.3</span>  Model performance</a></li>
+  <li><a href="#predict-the-future-value" id="toc-predict-the-future-value" class="nav-link" data-scroll-target="#predict-the-future-value"><span class="toc-section-number">3.4</span>  Predict the future value</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Analysis and Results</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>In this part, a model to predict RSV hospitalization rate is trying to be established. The question is what range of data we should be included to better predict the RSV rate, one year, or two year. This question will be solved in this part.</p>
+<p>Before that, the data distribution of RSV hospitalization rates from 2018 to now is displayed below.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.8     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.1
+✔ readr   2.1.2     ✔ forcats 0.5.2
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/RSVNET weekly rate 1422.xlsx"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1819),<span class="at">color=</span><span class="st">"orange"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1819),<span class="at">color=</span><span class="st">"orange"</span>)<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1920),<span class="at">color=</span><span class="st">"green"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1920),<span class="at">color=</span><span class="st">"green"</span>)<span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2021),<span class="at">color=</span><span class="st">"pink"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2021),<span class="at">color=</span><span class="st">"pink"</span>)<span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2122),<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2122),<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2223),<span class="at">color=</span><span class="st">"brown"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2223),<span class="at">color=</span><span class="st">"brown"</span>)<span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"RSV-NET Week (2018-2023)"</span>,<span class="at">y=</span><span class="st">"Rates"</span>,<span class="at">title=</span><span class="st">"Rates of RSV-Associated Hospitalization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 22 row(s) containing missing values (geom_path).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 22 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 22 row(s) containing missing values (geom_path).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 22 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 46 row(s) containing missing values (geom_path).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 46 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="RSVNET-data-analysis-and-results_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong><em>Note: (1) color orange: year 2018-2019; color green: year 2019-2020; color pink: year 2020-2021; color purple: 2021-2022; color brown: 2022-2023</em></strong></p>
+<p><strong><em>(2)In 2018-2020, data shown is from October 1 to April 30 each year; In 2020-now, data is from October 1 to the next year October 1 each year.</em></strong></p>
+<p><strong><em>(3)In year 2020-2021, because of Covid restriction and mask mandate, there are fewer cases.</em></strong></p>
+<p>From the graph below, we notice that data is not linear distributed, and curved lines are noticed. So, polynomial regression is selected to be our approach.</p>
+<section id="one-year-to-date-data-analysis" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="one-year-to-date-data-analysis"><span class="header-section-number">3.1</span> One year-to-date data Analysis</h2>
+<p>A model built for 1 year-to date data follows the following steps.</p>
+<section id="data-pre-processing-and-distribution" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="data-pre-processing-and-distribution"><span class="header-section-number">3.1.1</span> Data Pre-processing and Distribution</h3>
+<p>Data was examined before our modeling, including checking for missing values and removing outlines.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/oneyeartodate data.xlsx"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#checking missing data</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(data1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Week oneyeartodate 
+            0             0 </code></pre>
+</div>
+</div>
+<p>One-year-to-date data distribution with a curve line was shown below. We can see that the straight line is unable to capture the patterns in the data. Data is being under-fitting.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data1,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>oneyeartodate))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data1,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>oneyeartodate),<span class="at">color=</span><span class="st">"blue"</span>)<span class="sc">+</span><span class="fu">stat_smooth</span>(<span class="at">method=</span>lm,<span class="at">formula=</span>y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">1</span>,<span class="at">raw=</span><span class="cn">TRUE</span>))<span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"RSV-NET week Week 46th,2021-Week 45th,2022"</span>,<span class="at">y=</span><span class="st">"Rates"</span>,<span class="at">title=</span><span class="st">"Rates of RSV-Associated Hospitalization One year-to-date"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="RSVNET-data-analysis-and-results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="polynomial-regression-and-results" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="polynomial-regression-and-results"><span class="header-section-number">3.1.2</span> Polynomial Regression and results</h3>
+<p>To overcome under-fitting, we generate a higher order equation to increase the complexity of the model. To do that, we add powers of the original features as new features through polynomial regression analysis. Data was split into train data and test data, and a comparison was made to decide which degree of model is the best fit for the data from Nov 2021 to Nov 2022.</p>
+<p><img src="images/paste-99DEEB9C.png" class="img-fluid" width="575"></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'caret'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    lift</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>my_data<span class="ot">&lt;-</span>data1</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#split data into training and test</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">150</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>training.samples <span class="ot">&lt;-</span>data1<span class="sc">$</span>oneyeartodate <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">createDataPartition</span>(<span class="at">p=</span><span class="fl">0.8</span>,<span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>train.data<span class="ot">&lt;-</span>my_data[training.samples, ]</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>test.data<span class="ot">&lt;-</span>my_data[<span class="sc">-</span>training.samples, ]</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">#build model</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(oneyeartodate<span class="sc">~</span><span class="fu">poly</span>(Week,<span class="dv">6</span>,<span class="at">raw=</span><span class="cn">TRUE</span>),<span class="at">data=</span>train.data)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = oneyeartodate ~ poly(Week, 6, raw = TRUE), data = train.data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.64803 -0.09377  0.00132  0.10147  0.53149 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)                 9.166e-01  6.768e-01   1.354   0.1843  
+poly(Week, 6, raw = TRUE)1  3.117e-01  2.695e-01   1.157   0.2553  
+poly(Week, 6, raw = TRUE)2 -7.364e-02  3.657e-02  -2.014   0.0518 .
+poly(Week, 6, raw = TRUE)3  5.399e-03  2.292e-03   2.356   0.0242 *
+poly(Week, 6, raw = TRUE)4 -1.781e-04  7.255e-05  -2.455   0.0192 *
+poly(Week, 6, raw = TRUE)5  2.714e-06  1.126e-06   2.411   0.0213 *
+poly(Week, 6, raw = TRUE)6 -1.530e-08  6.796e-09  -2.252   0.0307 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2112 on 35 degrees of freedom
+Multiple R-squared:  0.9606,    Adjusted R-squared:  0.9538 
+F-statistic:   142 on 6 and 35 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predict using the model</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>predictions<span class="ot">&lt;-</span>model <span class="sc">%&gt;%</span> <span class="fu">predict</span>(test.data)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#error</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>error<span class="ot">&lt;-</span><span class="fu">RMSE</span>(predictions,test.data<span class="sc">$</span>oneyeartodate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We listed the Multiple R-squared and root mean square error (RMSE, or error) when the degree of polynomials from 1 to 10. We can observe with the increase of the degree, multiple r-square increase too. While error goes down and then goes up again when we keep adding the powers of the original features. That incease of the error is caused by data overfitting, the model try to pass through most of the data points.</p>
+<p>The best model we looking for is the one with high multiple R square (0.9606) and low RMSE (0.16), so we select the model with degree of 6.</p>
+</section>
+</section>
+<section id="two-year-to-date-data-analysis" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="two-year-to-date-data-analysis"><span class="header-section-number">3.2</span> Two year-to-date data Analysis</h2>
+<p>We also analysis the date from Nov, 2020 to Nov, 2022 following the same steps, and try to see if including more data points will get a better prediction model.</p>
+<section id="data-pre-processing-and-distribution-1" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="data-pre-processing-and-distribution-1"><span class="header-section-number">3.2.1</span> Data Pre-processing and Distribution</h3>
+<p>Two-year-to-date data distribution with a curve line was shown below. Data is under fitted, polynomial regression is needed to increase the complexity of the model.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/twoyeartodate.xlsx"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#checking missing data</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(data2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Week twoyeartodate 
+            0             0 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data2,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>twoyeartodate))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data2,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>twoyeartodate),<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span><span class="fu">stat_smooth</span>(<span class="at">method=</span>lm,<span class="at">formula=</span>y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">1</span>,<span class="at">raw=</span><span class="cn">TRUE</span>))<span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"RSV-NET week Week 46th,2020-Week 45th,2022"</span>,<span class="at">y=</span><span class="st">"Rates"</span>,<span class="at">title=</span><span class="st">"Rates of RSV-Associated Hospitalization two year-to-date"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="RSVNET-data-analysis-and-results_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="polynomial-regression-and-results-1" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="polynomial-regression-and-results-1"><span class="header-section-number">3.2.2</span> Polynomial Regression and results</h3>
+<p>The best model for the most recent two year data we select is at the degree of 5 with multiple r-square 0.92 and error 0.24.</p>
+<p><img src="images/paste-9BB97AC3.png" class="img-fluid" width="593"></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>my_data2<span class="ot">&lt;-</span>data2</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#split data into training and test</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">150</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>training.samples <span class="ot">&lt;-</span>data2<span class="sc">$</span>twoyeartodate <span class="sc">%&gt;%</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">createDataPartition</span>(<span class="at">p=</span><span class="fl">0.8</span>,<span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>train.data2<span class="ot">&lt;-</span>my_data2[training.samples, ]</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>test.data2<span class="ot">&lt;-</span>my_data2[<span class="sc">-</span>training.samples, ]</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co">#build model</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>model2<span class="ot">&lt;-</span><span class="fu">lm</span>(twoyeartodate<span class="sc">~</span><span class="fu">poly</span>(Week,<span class="dv">5</span>,<span class="at">raw=</span><span class="cn">TRUE</span>),<span class="at">data=</span>train.data2)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = twoyeartodate ~ poly(Week, 5, raw = TRUE), data = train.data2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.5665 -0.1158  0.0259  0.1323  0.6496 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 1.069e-01  1.526e-01   0.700  0.48573    
+poly(Week, 5, raw = TRUE)1 -2.892e-02  2.961e-02  -0.977  0.33156    
+poly(Week, 5, raw = TRUE)2  8.463e-04  1.752e-03   0.483  0.63048    
+poly(Week, 5, raw = TRUE)3  4.486e-05  4.235e-05   1.059  0.29274    
+poly(Week, 5, raw = TRUE)4 -1.265e-06  4.444e-07  -2.846  0.00565 ** 
+poly(Week, 5, raw = TRUE)5  7.821e-09  1.683e-09   4.646 1.33e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2338 on 79 degrees of freedom
+Multiple R-squared:   0.92, Adjusted R-squared:  0.9149 
+F-statistic: 181.6 on 5 and 79 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predict using the model</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>predictions2<span class="ot">&lt;-</span>model2 <span class="sc">%&gt;%</span> <span class="fu">predict</span>(test.data2)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#error</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>error<span class="ot">&lt;-</span><span class="fu">RMSE</span>(predictions2,test.data2<span class="sc">$</span>twoyeartodate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><img src="images/paste-09152757.png" class="img-fluid" width="564"></p>
+<p>By comparison the two year-to-date data with the one year-to-date data, it shows that building RSV hospitalization rate model containing most recent one year data create the best prediction model.</p>
+</section>
+</section>
+<section id="model-performance" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">3.3</span> Model performance</h2>
+<p>The model for RSV hospitalization rate from Nov, 2021 to Nov, 2022 was formed as:</p>
+<p><strong>RSV Hospitalization Rate = 0.917 + 0.312Week - 0.074Week<sup>2</sup> + 0.0054Week<sup>3</sup> - 0.00018Week<sup>4</sup> + 0.0000027Week<sup>5</sup> - 0.000000015Week<sup>6</sup></strong></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                Estimate   Std. Error   t value   Pr(&gt;|t|)
+(Intercept)                 9.165688e-01 6.768202e-01  1.354228 0.18434303
+poly(Week, 6, raw = TRUE)1  3.116708e-01 2.694685e-01  1.156613 0.25526403
+poly(Week, 6, raw = TRUE)2 -7.363560e-02 3.656703e-02 -2.013716 0.05177789
+poly(Week, 6, raw = TRUE)3  5.399174e-03 2.292002e-03  2.355659 0.02422194
+poly(Week, 6, raw = TRUE)4 -1.781037e-04 7.255321e-05 -2.454801 0.01921034
+poly(Week, 6, raw = TRUE)5  2.713662e-06 1.125680e-06  2.410688 0.02131056
+poly(Week, 6, raw = TRUE)6 -1.530307e-08 6.795953e-09 -2.251792 0.03071366</code></pre>
+</div>
+</div>
+<p>When we compare the actual hospitalization with the predicted value from our model, we can get the numbers as follow. We can conclude that the model created is a good fit. It also can be shown at the graph below.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>compare <span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">actual=</span>test.data<span class="sc">$</span>oneyeartodate,<span class="at">predicted=</span>predictions)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(compare,<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   actual  predicted
+1     1.2 1.15982773
+2     1.1 1.28579756
+3     0.5 0.67668810
+4     0.2 0.42365176
+5     0.1 0.07749228
+6     0.2 0.12270299
+7     0.2 0.18344956
+8     0.3 0.27587346
+9     0.3 0.24948406
+10    2.5 2.16341891</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>modelPerformance<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">RMSE=</span><span class="fu">RMSE</span>(predictions,test.data<span class="sc">$</span>oneyeartodate),<span class="at">R2=</span><span class="fu">R2</span>(predictions,test.data<span class="sc">$</span>oneyeartodate))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(train.data,<span class="fu">aes</span>(Week,oneyeartodate))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">stat_smooth</span>(<span class="at">method=</span>lm,<span class="at">formula=</span>y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">6</span>,<span class="at">raw=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="RSVNET-data-analysis-and-results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="predict-the-future-value" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="predict-the-future-value"><span class="header-section-number">3.4</span> Predict the future value</h2>
+<p>We have got our model with the equation for the RSV hospitalization rate data in the recent one year: <strong>RSV Hospitalization Rate = 0.917 + 0.312Week - 0.074Week<sup>2</sup> + 0.0054Week<sup>3</sup> - 0.00018Week<sup>4</sup> + 0.0000027Week<sup>5</sup> - 0.000000015Week<sup>6</sup></strong></p>
+<p>On the ground of this model, we predicted the future RSV hospitalization rates in the next three months. A table is listed below to show the trend. Following the trend in our model, rates keep going up and a rate of 9 could be reached at the beginning of next year.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>newcases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Week =</span> <span class="fu">c</span>(<span class="dv">53</span>,<span class="dv">54</span>,<span class="dv">55</span>,<span class="dv">56</span>,<span class="dv">57</span>,<span class="dv">58</span>,<span class="dv">59</span>,<span class="dv">60</span>,<span class="dv">61</span>,<span class="dv">62</span>,<span class="dv">63</span>,<span class="dv">64</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model,newcases)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1        2        3        4        5        6        7        8 
+4.739955 5.355397 5.982861 6.608093 7.213810 7.779410 8.280680 8.689482 
+       9       10       11       12 
+8.973439 9.095602 9.014112 8.681845 </code></pre>
+</div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Actual date</th>
+<th>Rates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1: 46th week</td>
+<td>11/14/2022-11/20/2022</td>
+<td>4.74</td>
+</tr>
+<tr class="even">
+<td>2: 47th week</td>
+<td>11/21/2022-11/27/2022</td>
+<td>5.36</td>
+</tr>
+<tr class="odd">
+<td>3: 48th week</td>
+<td>11/28/2022-12/4/2022</td>
+<td>5.98</td>
+</tr>
+<tr class="even">
+<td>4: 49th week</td>
+<td>12/5/2022-12/22/2022</td>
+<td>6.61</td>
+</tr>
+<tr class="odd">
+<td>5: 50th week</td>
+<td>12/12/2022-12/18/2022</td>
+<td>7.21</td>
+</tr>
+<tr class="even">
+<td>6: 51th week</td>
+<td>12/19/2022-12/25/2022</td>
+<td>7.78</td>
+</tr>
+<tr class="odd">
+<td>7: 52th week</td>
+<td>12/26/2022-1/1/2023</td>
+<td>8.28</td>
+</tr>
+<tr class="even">
+<td>8: 1st week</td>
+<td>1/2/2023-1/8/2023</td>
+<td>8.69</td>
+</tr>
+<tr class="odd">
+<td>9: 2nd week</td>
+<td>1/9/2023-1/15/2023</td>
+<td>8.97</td>
+</tr>
+<tr class="even">
+<td>10: 3rd week</td>
+<td>1/16/2023-1/22/2023</td>
+<td>9.10</td>
+</tr>
+<tr class="odd">
+<td>11: 4th week</td>
+<td>1/23/2023-1/29/2023</td>
+<td>9.01</td>
+</tr>
+<tr class="even">
+<td>12: 5th week</td>
+<td>1/30/2023-2/5/2023</td>
+<td>8.68</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Methods.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methodology</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./conclusion.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conclusion</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb33" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Analysis and Results</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>In this part, a model to predict RSV hospitalization rate is trying to be established. The question is what range of data we should be included to better predict the RSV rate, one year, or two year. This question will be solved in this part.</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>Before that, the data distribution of RSV hospitalization rates from 2018 to now is displayed below.</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/RSVNET weekly rate 1422.xlsx"</span>)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1819),<span class="at">color=</span><span class="st">"orange"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1819),<span class="at">color=</span><span class="st">"orange"</span>)<span class="sc">+</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1920),<span class="at">color=</span><span class="st">"green"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year1920),<span class="at">color=</span><span class="st">"green"</span>)<span class="sc">+</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2021),<span class="at">color=</span><span class="st">"pink"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2021),<span class="at">color=</span><span class="st">"pink"</span>)<span class="sc">+</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2122),<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2122),<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2223),<span class="at">color=</span><span class="st">"brown"</span>)<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>year2223),<span class="at">color=</span><span class="st">"brown"</span>)<span class="sc">+</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"RSV-NET Week (2018-2023)"</span>,<span class="at">y=</span><span class="st">"Rates"</span>,<span class="at">title=</span><span class="st">"Rates of RSV-Associated Hospitalization"</span>)</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>***Note: (1) color orange: year 2018-2019; color green: year 2019-2020; color pink: year 2020-2021; color purple: 2021-2022; color brown: 2022-2023***</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>***(2)In 2018-2020, data shown is from October 1 to April 30 each year; In 2020-now, data is from October 1 to the next year October 1 each year.***</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>***(3)In year 2020-2021, because of Covid restriction and mask mandate, there are fewer cases.***</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>From the graph below, we notice that data is not linear distributed, and curved lines are noticed. So, polynomial regression is selected to be our approach.</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## One year-to-date data Analysis</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>A model built for 1 year-to date data follows the following steps.</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Pre-processing and Distribution</span></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>Data was examined before our modeling, including checking for missing values and removing outlines.</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/oneyeartodate data.xlsx"</span>)</span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a><span class="co">#checking missing data</span></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(data1))</span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>One-year-to-date data distribution with a curve line was shown below. We can see that the straight line is unable to capture the patterns in the data. Data is being under-fitting.</span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data1,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>oneyeartodate))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data1,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>oneyeartodate),<span class="at">color=</span><span class="st">"blue"</span>)<span class="sc">+</span><span class="fu">stat_smooth</span>(<span class="at">method=</span>lm,<span class="at">formula=</span>y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">1</span>,<span class="at">raw=</span><span class="cn">TRUE</span>))<span class="sc">+</span></span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"RSV-NET week Week 46th,2021-Week 45th,2022"</span>,<span class="at">y=</span><span class="st">"Rates"</span>,<span class="at">title=</span><span class="st">"Rates of RSV-Associated Hospitalization One year-to-date"</span>)</span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### Polynomial Regression and results</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>To overcome under-fitting, we generate a higher order equation to increase the complexity of the model. To do that, we add powers of the original features as new features through polynomial regression analysis. Data was split into train data and test data, and a comparison was made to decide which degree of model is the best fit for the data from Nov 2021 to Nov 2022.</span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-99DEEB9C.png)</span>{width="575"}</span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
+<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a>my_data<span class="ot">&lt;-</span>data1</span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a><span class="co">#split data into training and test</span></span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">150</span>)</span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a>training.samples <span class="ot">&lt;-</span>data1<span class="sc">$</span>oneyeartodate <span class="sc">%&gt;%</span></span>
+<span id="cb33-80"><a href="#cb33-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-81"><a href="#cb33-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">createDataPartition</span>(<span class="at">p=</span><span class="fl">0.8</span>,<span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a>train.data<span class="ot">&lt;-</span>my_data[training.samples, ]</span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a>test.data<span class="ot">&lt;-</span>my_data[<span class="sc">-</span>training.samples, ]</span>
+<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a><span class="co">#build model</span></span>
+<span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(oneyeartodate<span class="sc">~</span><span class="fu">poly</span>(Week,<span class="dv">6</span>,<span class="at">raw=</span><span class="cn">TRUE</span>),<span class="at">data=</span>train.data)</span>
+<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a><span class="co">#predict using the model</span></span>
+<span id="cb33-94"><a href="#cb33-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-95"><a href="#cb33-95" aria-hidden="true" tabindex="-1"></a>predictions<span class="ot">&lt;-</span>model <span class="sc">%&gt;%</span> <span class="fu">predict</span>(test.data)</span>
+<span id="cb33-96"><a href="#cb33-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-97"><a href="#cb33-97" aria-hidden="true" tabindex="-1"></a><span class="co">#error</span></span>
+<span id="cb33-98"><a href="#cb33-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-99"><a href="#cb33-99" aria-hidden="true" tabindex="-1"></a>error<span class="ot">&lt;-</span><span class="fu">RMSE</span>(predictions,test.data<span class="sc">$</span>oneyeartodate)</span>
+<span id="cb33-100"><a href="#cb33-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-101"><a href="#cb33-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-102"><a href="#cb33-102" aria-hidden="true" tabindex="-1"></a>We listed the Multiple R-squared and root mean square error (RMSE, or error) when the degree of polynomials from 1 to 10. We can observe with the increase of the degree, multiple r-square increase too. While error goes down and then goes up again when we keep adding the powers of the original features. That incease of the error is caused by data overfitting, the model try to pass through most of the data points.</span>
+<span id="cb33-103"><a href="#cb33-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-104"><a href="#cb33-104" aria-hidden="true" tabindex="-1"></a>The best model we looking for is the one with high multiple R square (0.9606) and low RMSE (0.16), so we select the model with degree of 6.</span>
+<span id="cb33-105"><a href="#cb33-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-106"><a href="#cb33-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Two year-to-date data Analysis</span></span>
+<span id="cb33-107"><a href="#cb33-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-108"><a href="#cb33-108" aria-hidden="true" tabindex="-1"></a>We also analysis the date from Nov, 2020 to Nov, 2022 following the same steps, and try to see if including more data points will get a better prediction model.</span>
+<span id="cb33-109"><a href="#cb33-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-110"><a href="#cb33-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Pre-processing and Distribution</span></span>
+<span id="cb33-111"><a href="#cb33-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-112"><a href="#cb33-112" aria-hidden="true" tabindex="-1"></a>Two-year-to-date data distribution with a curve line was shown below. Data is under fitted, polynomial regression is needed to increase the complexity of the model.</span>
+<span id="cb33-113"><a href="#cb33-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-116"><a href="#cb33-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-117"><a href="#cb33-117" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb33-118"><a href="#cb33-118" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb33-119"><a href="#cb33-119" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb33-120"><a href="#cb33-120" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/twoyeartodate.xlsx"</span>)</span>
+<span id="cb33-121"><a href="#cb33-121" aria-hidden="true" tabindex="-1"></a><span class="co">#checking missing data</span></span>
+<span id="cb33-122"><a href="#cb33-122" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(data2))</span>
+<span id="cb33-123"><a href="#cb33-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-124"><a href="#cb33-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-125"><a href="#cb33-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-128"><a href="#cb33-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-129"><a href="#cb33-129" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data2,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>twoyeartodate))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">data=</span>data2,<span class="fu">aes</span>(<span class="at">x=</span>Week,<span class="at">y=</span>twoyeartodate),<span class="at">color=</span><span class="st">"purple"</span>)<span class="sc">+</span><span class="fu">stat_smooth</span>(<span class="at">method=</span>lm,<span class="at">formula=</span>y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">1</span>,<span class="at">raw=</span><span class="cn">TRUE</span>))<span class="sc">+</span></span>
+<span id="cb33-130"><a href="#cb33-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"RSV-NET week Week 46th,2020-Week 45th,2022"</span>,<span class="at">y=</span><span class="st">"Rates"</span>,<span class="at">title=</span><span class="st">"Rates of RSV-Associated Hospitalization two year-to-date"</span>)</span>
+<span id="cb33-131"><a href="#cb33-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-132"><a href="#cb33-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-133"><a href="#cb33-133" aria-hidden="true" tabindex="-1"></a><span class="fu">### Polynomial Regression and results</span></span>
+<span id="cb33-134"><a href="#cb33-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-135"><a href="#cb33-135" aria-hidden="true" tabindex="-1"></a>The best model for the most recent two year data we select is at the degree of 5 with multiple r-square 0.92 and error 0.24.</span>
+<span id="cb33-136"><a href="#cb33-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-137"><a href="#cb33-137" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-9BB97AC3.png)</span>{width="593"}</span>
+<span id="cb33-138"><a href="#cb33-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-141"><a href="#cb33-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-142"><a href="#cb33-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb33-143"><a href="#cb33-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-144"><a href="#cb33-144" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caTools)</span>
+<span id="cb33-145"><a href="#cb33-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-146"><a href="#cb33-146" aria-hidden="true" tabindex="-1"></a>my_data2<span class="ot">&lt;-</span>data2</span>
+<span id="cb33-147"><a href="#cb33-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-148"><a href="#cb33-148" aria-hidden="true" tabindex="-1"></a><span class="co">#split data into training and test</span></span>
+<span id="cb33-149"><a href="#cb33-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-150"><a href="#cb33-150" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">150</span>)</span>
+<span id="cb33-151"><a href="#cb33-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-152"><a href="#cb33-152" aria-hidden="true" tabindex="-1"></a>training.samples <span class="ot">&lt;-</span>data2<span class="sc">$</span>twoyeartodate <span class="sc">%&gt;%</span></span>
+<span id="cb33-153"><a href="#cb33-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-154"><a href="#cb33-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">createDataPartition</span>(<span class="at">p=</span><span class="fl">0.8</span>,<span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb33-155"><a href="#cb33-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-156"><a href="#cb33-156" aria-hidden="true" tabindex="-1"></a>train.data2<span class="ot">&lt;-</span>my_data2[training.samples, ]</span>
+<span id="cb33-157"><a href="#cb33-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-158"><a href="#cb33-158" aria-hidden="true" tabindex="-1"></a>test.data2<span class="ot">&lt;-</span>my_data2[<span class="sc">-</span>training.samples, ]</span>
+<span id="cb33-159"><a href="#cb33-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-160"><a href="#cb33-160" aria-hidden="true" tabindex="-1"></a><span class="co">#build model</span></span>
+<span id="cb33-161"><a href="#cb33-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-162"><a href="#cb33-162" aria-hidden="true" tabindex="-1"></a>model2<span class="ot">&lt;-</span><span class="fu">lm</span>(twoyeartodate<span class="sc">~</span><span class="fu">poly</span>(Week,<span class="dv">5</span>,<span class="at">raw=</span><span class="cn">TRUE</span>),<span class="at">data=</span>train.data2)</span>
+<span id="cb33-163"><a href="#cb33-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-164"><a href="#cb33-164" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span>
+<span id="cb33-165"><a href="#cb33-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-166"><a href="#cb33-166" aria-hidden="true" tabindex="-1"></a><span class="co">#predict using the model</span></span>
+<span id="cb33-167"><a href="#cb33-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-168"><a href="#cb33-168" aria-hidden="true" tabindex="-1"></a>predictions2<span class="ot">&lt;-</span>model2 <span class="sc">%&gt;%</span> <span class="fu">predict</span>(test.data2)</span>
+<span id="cb33-169"><a href="#cb33-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-170"><a href="#cb33-170" aria-hidden="true" tabindex="-1"></a><span class="co">#error</span></span>
+<span id="cb33-171"><a href="#cb33-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-172"><a href="#cb33-172" aria-hidden="true" tabindex="-1"></a>error<span class="ot">&lt;-</span><span class="fu">RMSE</span>(predictions2,test.data2<span class="sc">$</span>twoyeartodate)</span>
+<span id="cb33-173"><a href="#cb33-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-174"><a href="#cb33-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-175"><a href="#cb33-175" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-09152757.png)</span>{width="564"}</span>
+<span id="cb33-176"><a href="#cb33-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-177"><a href="#cb33-177" aria-hidden="true" tabindex="-1"></a>By comparison the two year-to-date data with the one year-to-date data, it shows that building RSV hospitalization rate model containing most recent one year data create the best prediction model.</span>
+<span id="cb33-178"><a href="#cb33-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-179"><a href="#cb33-179" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model performance</span></span>
+<span id="cb33-180"><a href="#cb33-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-181"><a href="#cb33-181" aria-hidden="true" tabindex="-1"></a>The model for RSV hospitalization rate from Nov, 2021 to Nov, 2022 was formed as:</span>
+<span id="cb33-182"><a href="#cb33-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-183"><a href="#cb33-183" aria-hidden="true" tabindex="-1"></a>**RSV Hospitalization Rate = 0.917 + 0.312Week - 0.074Week^2^ + 0.0054Week^3^ - 0.00018Week^4^ + 0.0000027Week^5^ - 0.000000015Week^6^**</span>
+<span id="cb33-184"><a href="#cb33-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-187"><a href="#cb33-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-188"><a href="#cb33-188" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(model))</span>
+<span id="cb33-189"><a href="#cb33-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-190"><a href="#cb33-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-191"><a href="#cb33-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-192"><a href="#cb33-192" aria-hidden="true" tabindex="-1"></a>When we compare the actual hospitalization with the predicted value from our model, we can get the numbers as follow. We can conclude that the model created is a good fit. It also can be shown at the graph below.</span>
+<span id="cb33-193"><a href="#cb33-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-196"><a href="#cb33-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-197"><a href="#cb33-197" aria-hidden="true" tabindex="-1"></a>compare <span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">actual=</span>test.data<span class="sc">$</span>oneyeartodate,<span class="at">predicted=</span>predictions)</span>
+<span id="cb33-198"><a href="#cb33-198" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(compare,<span class="at">n=</span><span class="dv">10</span>)</span>
+<span id="cb33-199"><a href="#cb33-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-200"><a href="#cb33-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-203"><a href="#cb33-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-204"><a href="#cb33-204" aria-hidden="true" tabindex="-1"></a>modelPerformance<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">RMSE=</span><span class="fu">RMSE</span>(predictions,test.data<span class="sc">$</span>oneyeartodate),<span class="at">R2=</span><span class="fu">R2</span>(predictions,test.data<span class="sc">$</span>oneyeartodate))</span>
+<span id="cb33-205"><a href="#cb33-205" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(train.data,<span class="fu">aes</span>(Week,oneyeartodate))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">stat_smooth</span>(<span class="at">method=</span>lm,<span class="at">formula=</span>y<span class="sc">~</span><span class="fu">poly</span>(x,<span class="dv">6</span>,<span class="at">raw=</span><span class="cn">TRUE</span>))</span>
+<span id="cb33-206"><a href="#cb33-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-207"><a href="#cb33-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-208"><a href="#cb33-208" aria-hidden="true" tabindex="-1"></a><span class="fu">## Predict the future value</span></span>
+<span id="cb33-209"><a href="#cb33-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-210"><a href="#cb33-210" aria-hidden="true" tabindex="-1"></a>We have got our model with the equation for the RSV hospitalization rate data in the recent one year: **RSV Hospitalization Rate = 0.917 + 0.312Week - 0.074Week^2^ + 0.0054Week^3^ - 0.00018Week^4^ + 0.0000027Week^5^ - 0.000000015Week^6^**</span>
+<span id="cb33-211"><a href="#cb33-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-212"><a href="#cb33-212" aria-hidden="true" tabindex="-1"></a>On the ground of this model, we predicted the future RSV hospitalization rates in the next three months. A table is listed below to show the trend. Following the trend in our model, rates keep going up and a rate of 9 could be reached at the beginning of next year.</span>
+<span id="cb33-213"><a href="#cb33-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-216"><a href="#cb33-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-217"><a href="#cb33-217" aria-hidden="true" tabindex="-1"></a>newcases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Week =</span> <span class="fu">c</span>(<span class="dv">53</span>,<span class="dv">54</span>,<span class="dv">55</span>,<span class="dv">56</span>,<span class="dv">57</span>,<span class="dv">58</span>,<span class="dv">59</span>,<span class="dv">60</span>,<span class="dv">61</span>,<span class="dv">62</span>,<span class="dv">63</span>,<span class="dv">64</span>))</span>
+<span id="cb33-218"><a href="#cb33-218" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model,newcases)</span>
+<span id="cb33-219"><a href="#cb33-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-220"><a href="#cb33-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-221"><a href="#cb33-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-222"><a href="#cb33-222" aria-hidden="true" tabindex="-1"></a>| Week         | Actual date           | Rates |</span>
+<span id="cb33-223"><a href="#cb33-223" aria-hidden="true" tabindex="-1"></a>|--------------|-----------------------|-------|</span>
+<span id="cb33-224"><a href="#cb33-224" aria-hidden="true" tabindex="-1"></a>| 1: 46th week | 11/14/2022-11/20/2022 | 4.74  |</span>
+<span id="cb33-225"><a href="#cb33-225" aria-hidden="true" tabindex="-1"></a>| 2: 47th week | 11/21/2022-11/27/2022 | 5.36  |</span>
+<span id="cb33-226"><a href="#cb33-226" aria-hidden="true" tabindex="-1"></a>| 3: 48th week | 11/28/2022-12/4/2022  | 5.98  |</span>
+<span id="cb33-227"><a href="#cb33-227" aria-hidden="true" tabindex="-1"></a>| 4: 49th week | 12/5/2022-12/22/2022  | 6.61  |</span>
+<span id="cb33-228"><a href="#cb33-228" aria-hidden="true" tabindex="-1"></a>| 5: 50th week | 12/12/2022-12/18/2022 | 7.21  |</span>
+<span id="cb33-229"><a href="#cb33-229" aria-hidden="true" tabindex="-1"></a>| 6: 51th week | 12/19/2022-12/25/2022 | 7.78  |</span>
+<span id="cb33-230"><a href="#cb33-230" aria-hidden="true" tabindex="-1"></a>| 7: 52th week | 12/26/2022-1/1/2023   | 8.28  |</span>
+<span id="cb33-231"><a href="#cb33-231" aria-hidden="true" tabindex="-1"></a>| 8: 1st week  | 1/2/2023-1/8/2023     | 8.69  |</span>
+<span id="cb33-232"><a href="#cb33-232" aria-hidden="true" tabindex="-1"></a>| 9: 2nd week  | 1/9/2023-1/15/2023    | 8.97  |</span>
+<span id="cb33-233"><a href="#cb33-233" aria-hidden="true" tabindex="-1"></a>| 10: 3rd week | 1/16/2023-1/22/2023   | 9.10  |</span>
+<span id="cb33-234"><a href="#cb33-234" aria-hidden="true" tabindex="-1"></a>| 11: 4th week | 1/23/2023-1/29/2023   | 9.01  |</span>
+<span id="cb33-235"><a href="#cb33-235" aria-hidden="true" tabindex="-1"></a>| 12: 5th week | 1/30/2023-2/5/2023    | 8.68  |</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>

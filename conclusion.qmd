@@ -3,9 +3,7 @@ title: "Conclusion"
 editor: visual
 ---
 
-## 4. Conclusion
-
-### 4.1 Summary
+## Summary
 
 Respiratory syncytial virus has been gaining more and more attention since the hospitalization rate has been increasing dramatically while there is no vaccines available now. A reliable regression model will benefit us to better prepare for it.
 
@@ -13,7 +11,7 @@ Our article has generated a model that has a well fit (multiple R square =0.9606
 
 Furthermore, 3 month future RSV hospitalization rates were calculated. If there is nothing to be done to stop the spread, the hospitalization rates in the next 3 months could be very high, even to 9.
 
-### 4.2 Limitation
+## Limitation
 
 From the polynomial regression approach, we know that it is very sensitive to the outliers. The current high rates might shift our model and affect the results. Second, polynomial may provide good fits within the range of data, but they will frequently deteriorate rapidly outside the range of the data. To gain a better accurate prediction, people need to repeatedly generate new models. Third, In order to model data with a complicated structure, the degree of the model must be high, indicating and the associated number of parameters to be estimated will also be high. This can result in highly unstable models. Other approaches might be applied combined with polynomial regression to attain a more stable model.
 

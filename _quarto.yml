@@ -3,19 +3,25 @@ project:
  output-dir: docs
 
 book: 
-  title: "Book on RSV Data Analysis using Polynomial Regression method"
-
+  title: "Polynomial Regression"
+  subtitle: for CDC data with Application for Predicting RSV in USA
+  reader-mode: true
   author: "Arun & Zhongyi"
   date: "11/18/2022"
+  search: true
 
   chapters: 
     - index.qmd
     - Introduction.qmd
     - Methods.qmd
-    - Data Analysis.qmd
+    - RSVNET data analysis and results.qmd
+    - conclusion.qmd
+    #- Project Presentation on Polynomial Regression
+    #- Data Analysis.qmd
     #- data analysis and result.qmd
     - References.qmd
     - about.qmd
+    #- Project Presentation on Polynomial Regression
 
 format:
   html:

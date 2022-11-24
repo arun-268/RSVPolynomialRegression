@@ -1,5 +1,5 @@
 ---
-title: "Method"
+title: "Methodology"
 Format: html
 editor: visual
 ---
@@ -69,7 +69,7 @@ The table below summarizes changes in surveillance populations and collection of
 Each row in the dataset is a laboratory confirmed RSV associated hospitalization. It has 8 columns which are described in below table
 
 | Column Name  | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
-|----------------|--------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | State        | Represents the state name from which data was collected. Entire state means all 9 states considered in this dataset.                                                                                                                                                                                                                                                                                               |
 | MMWR Year    | Represents Year                                                                                                                                                                                                                                                                                                                                                                                                    |
 | MMWR Week    | Represents week of that year. MMWR - *Morbidity and Mortality Weekly Report,* is prepared by the Centers for Disease Control and Prevention (CDC).                                                                                                                                                                                                                                                                 |
@@ -79,19 +79,23 @@ Each row in the dataset is a laboratory confirmed RSV associated hospitalization
 | Race         | Black, White, American Indian/Alaska Native and Asian/Pacific Islander people are categorized as non-Hispanic. Hispanic people could be of any race. If Hispanic ethnicity was unknown, non-Hispanic ethnicity was assumed.                                                                                                                                                                                        |
 | Rate         | Rates presented by race and ethnicity are calculated using records wit known race. Those with missing or unknown race are excluded from specific estimates but are included in overall esitmates. Hospitalization rates are based only on those who had positive test results for RSV through a test ordered by a health care professional not all people hospitalized with respiratory illness are tested for RSV |
 
-**Columns Considered:**
+**Variables Considered:**
 
-Of the other available column values we have considered columns "**MMWR Week**" & "**Rate**" for our model. The data was last updated on **17th November 2022**. We have considered last 12 months of YTD data for our calculations.
+Of the other available column values we have considered columns "**MMWR Week**" & "**Rate**" for our model. The data was last updated on **17th November 2022**. We have considered two sets of data, one with last 12 months of YTD data and another one with 24 months of YTD data for our calculations.
 
 ## Methods
 
-### *Why Ploynomial Regression?*
+### *Why Polynomial Regression?*
 
-In simple linear regression algorithm only works when the relationship between the data is linear But suppose if we have non-linear data then Linear regression will not capable to draw a best-fit line and It fails in such conditions. consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well means which do not comes close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.
+In simple linear regression algorithm only works when the relationship between the data is linear, suppose if we have non-linear data then linear regression will not be capable to draw a best-fit line and it fails in such conditions. Consider the below diagram which has a non-linear relationship and you can see the Linear regression results on it, which does not perform well and doesn't come close to reality. Hence, we introduce polynomial regression to overcome this problem, which helps identify the curvilinear relationship between independent and dependent variables.
 
-**Note Replace the graph with new data.**
+**One Year-to-date Data:**
 
-![](images/paste-73DF7630.png)
+![](images/paste-4507D324.png){width="633"}
+
+**Two Year-to-date Data:**
+
+![](images/paste-4D5AA4F8.png){width="640"}
 
 ### **How Polynomial Regression Overcomes the problem of Non-Linear data?**
 
@@ -104,8 +108,8 @@ The equation of polynomial becomes something like this.
 
 **y = a~0~ + a~1~x~1~ + a~2~x~1~^2^ + ... + a~n~x~1~^n^**
 
-The degree of order which to use is a Hyperparameter, and we need to choose it wisely. But using a high degree of polynomial tries to overfit the data and for smaller values of degree, the model tries to underfit so we need to find the optimum value of a degree.
+The degree of order which to use is a Hyper-parameter, and we need to choose it wisely. But using a high degree of polynomial tries to over-fit the data and for smaller values of degree, the model tries to under-fit so we need to find the optimum value of a degree.
 
 If you see the equation of polynomial regression carefully, then we can see that we are trying to estimate the relationship between coefficients and y. And the values of x and y are already given to us, only we need to determine coefficients and the degree of coefficient here is 1 only, and degree one represents simple linear regression Hence, Polynomial regression is also known as polynomial Linear regression.
 
-Polynomial Regression is a form of Linear regression known as a special case of Multiple linear regression which estimates the relationship as an nth degree polynomial. Polynomial Regression is sensitive to outliers so the presence of one or two outliers can also badly affect the performance.
+Polynomial Regression is a form of Linear regression known as a special case of Multiple linear regression which estimates the relationship as an nth degree polynomial. Polynomial Regression is sensitive to Outliers so the presence of one or two Outliers can also badly affect the performance.

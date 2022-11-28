@@ -1,5 +1,0 @@
-## Preface {.unnumbered}
-
-This is the book to highlight our proposal of new statistical regression tool, Polynomial Regression Model, to investigate the dynamic of RSV in USA.
-
-We have seen a dramatic growth of RSV cases this year, but there aren't any articles founded yet to give prediction of the RSV cases. Based on the previous researches and the curve of RSV data current analysis has been carried out.

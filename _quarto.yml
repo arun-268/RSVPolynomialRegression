@@ -24,13 +24,15 @@ book:
     #- Project Presentation on Polynomial Regression
 
 format:
+
   html:
     theme: solar
     css: styles.css
     code-fold: true
     code-tools: true
+    code-link: true
   pdf:
     documentclass: scrreport
-    
+
 editor: visual
 

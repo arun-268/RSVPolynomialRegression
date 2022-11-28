@@ -2,13 +2,18 @@
 title: "Polynomial Regression"
 subtitle: "STA6257: Advanced Statistical Modeling"
 author: Arun & Zhongyi
+
 format: 
   revealjs:
-    incremental: true
-    slide-number: true
-    theme: moon
-    preview-links: auto
-    css: styles.css
+    theme: dark2
+    self-contained: false
+    slide-number: false
+    footer: "[STA6257 - Advanced Statistical Modeling](https://samanthaseals.github.io/STA6257)"
+    width: 1600
+    height: 900
+    chalkboard: true
+    df-print: paged
+    html-math-method: katex
 ---
 
 ## Introduction

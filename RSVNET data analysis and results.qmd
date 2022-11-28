@@ -1,3 +1,8 @@
+---
+execute: 
+  echo: false
+---
+
 ## Data Analysis and Results
 
 In this part, a model to predict RSV hospitalization rate is trying to be established. The question is what range of data we should be included to better predict the RSV rate, one year, or two year. This question will be solved in this part.
@@ -5,10 +10,13 @@ In this part, a model to predict RSV hospitalization rate is trying to be establ
 Before that, the data distribution of RSV hospitalization rates from 2018 to now is displayed below.
 
 ```{r}
-#load data
+#| warning: false
 library(tidyverse)
 library(readxl)
-data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/RSVNET weekly rate 1422.xlsx")
+library(caret)
+library(caTools)
+data <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Final Project/RSVPolynomialRegression/RSVNET weekly rate 1422.xlsx")
+
 ggplot()+
   geom_line(data=data,aes(x=Week,y=year1819),color="orange")+geom_point(data=data,aes(x=Week,y=year1819),color="orange")+
   geom_line(data=data,aes(x=Week,y=year1920),color="green")+geom_point(data=data,aes(x=Week,y=year1920),color="green")+
@@ -36,9 +44,9 @@ Data was examined before our modeling, including checking for missing values and
 
 ```{r}
 #load data
-library(tidyverse)
-library(readxl)
-data1 <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/oneyeartodate data.xlsx")
+#library(tidyverse)
+#library(readxl)
+data1 <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Final Project/RSVPolynomialRegression/oneyeartodate data.xlsx")
 #checking missing data
 colSums(is.na(data1))
 
@@ -46,7 +54,7 @@ colSums(is.na(data1))
 
 One-year-to-date data distribution with a curve line was shown below. We can see that the straight line is unable to capture the patterns in the data. Data is being under-fitting.
 
-```{r}
+```{r,echo=TRUE}
 ggplot(data1,aes(x=Week,y=oneyeartodate))+geom_point(data=data1,aes(x=Week,y=oneyeartodate),color="blue")+stat_smooth(method=lm,formula=y~poly(x,1,raw=TRUE))+
   labs(x="RSV-NET week Week 46th,2021-Week 45th,2022",y="Rates",title="Rates of RSV-Associated Hospitalization One year-to-date")
 ```
@@ -57,11 +65,7 @@ To overcome under-fitting, we generate a higher order equation to increase the c
 
 ![](images/paste-99DEEB9C.png){width="575"}
 
-```{r}
-library(caret)
-
-library(caTools)
-
+```{r,echo=TRUE}
 my_data<-data1
 
 #split data into training and test
@@ -105,15 +109,14 @@ Two-year-to-date data distribution with a curve line was shown below. Data is un
 
 ```{r}
 #load data
-library(tidyverse)
-library(readxl)
-data2 <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Week1-Project/PolynomialRegressionArNa/RSVPolynomialRegression/twoyeartodate.xlsx")
+
+data2 <- read_excel("/Users/arunraj/Documents/MS Data Science/Advance Statistical Modeling/Final Project/RSVPolynomialRegression/twoyeartodate.xlsx")
 #checking missing data
 colSums(is.na(data2))
 
 ```
 
-```{r}
+```{r,echo=TRUE}
 ggplot(data2,aes(x=Week,y=twoyeartodate))+geom_point(data=data2,aes(x=Week,y=twoyeartodate),color="purple")+stat_smooth(method=lm,formula=y~poly(x,1,raw=TRUE))+
   labs(x="RSV-NET week Week 46th,2020-Week 45th,2022",y="Rates",title="Rates of RSV-Associated Hospitalization two year-to-date")
 ```
@@ -124,11 +127,7 @@ The best model for the most recent two year data we select is at the degree of 5
 
 ![](images/paste-9BB97AC3.png){width="593"}
 
-```{r}
-library(caret)
-
-library(caTools)
-
+```{r,echo=TRUE}
 my_data2<-data2
 
 #split data into training and test
@@ -175,12 +174,12 @@ coef(summary(model))
 
 When we compare the actual hospitalization with the predicted value from our model, we can get the numbers as follow. We can conclude that the model created is a good fit. It also can be shown at the graph below.
 
-```{r}
+```{r, echo=TRUE}
 compare <-data.frame(actual=test.data$oneyeartodate,predicted=predictions)
 head(compare,n=10)
 ```
 
-```{r}
+```{r,echo=TRUE}
 modelPerformance=data.frame(RMSE=RMSE(predictions,test.data$oneyeartodate),R2=R2(predictions,test.data$oneyeartodate))
 ggplot(train.data,aes(Week,oneyeartodate))+geom_point()+stat_smooth(method=lm,formula=y~poly(x,6,raw=TRUE))
 ```
@@ -191,7 +190,7 @@ We have got our model with the equation for the RSV hospitalization rate data in
 
 On the ground of this model, we predicted the future RSV hospitalization rates in the next three months. A table is listed below to show the trend. Following the trend in our model, rates keep going up and a rate of 9 could be reached at the beginning of next year.
 
-```{r}
+```{r,echo=TRUE}
 newcases <- data.frame(Week = c(53,54,55,56,57,58,59,60,61,62,63,64))
 predict(model,newcases)
 

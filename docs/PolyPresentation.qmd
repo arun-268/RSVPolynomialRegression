@@ -1,0 +1,17 @@
+---
+title: "PolyPresentation"
+subtitle: "STA6257: Advanced Statistical Modeling"
+author: Arun & Zhongyi
+editor: visual
+format: 
+  revealjs:
+    theme: moon
+---
+
+## Introduction
+
+test content
+
+## Data
+
+slide2

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.28)  28 NOV 2022 20:57
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.28)  29 NOV 2022 10:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1189,6 +1189,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
 ] [5] [6]
 chapter 2.
+
+Overfull \hbox (17.63527pt too wide) in paragraph at lines 347--348
+[]\TU/lmr/m/n/10.95 Column 
+ []
+
+
+Overfull \hbox (7.58316pt too wide) in paragraph at lines 347--348
+\TU/lmr/m/n/10.95 Name  
+ []
+
+
+Overfull \hbox (4.85661pt too wide) in paragraph at lines 353--353
+[]|\TU/lmr/m/n/10.95 State|  
+ []
+
+
+Overfull \hbox (19.31061pt too wide) in paragraph at lines 355--355
+[]|\TU/lmr/m/n/10.95 MMWR 
+ []
+
+
+Overfull \hbox (1.44022pt too wide) in paragraph at lines 355--355
+\TU/lmr/m/n/10.95 Year|  
+ []
+
+
+Overfull \hbox (26.2967pt too wide) in paragraph at lines 356--356
+[]|\TU/lmr/bx/n/10.95 MMWR 
+ []
+
+
+Overfull \hbox (10.06882pt too wide) in paragraph at lines 356--356
+\TU/lmr/bx/n/10.95 Week|  
+ []
+
+
+Overfull \hbox (12.21501pt too wide) in paragraph at lines 359--359
+[]|\TU/lmr/m/n/10.95 Season|  
+ []
+
+
+Overfull \hbox (0.93652pt too wide) in paragraph at lines 361--361
+\TU/lmr/m/n/10.95 gory|  
+ []
+
+
+Overfull \hbox (3.17032pt too wide) in paragraph at lines 363--363
+[]|\TU/lmr/m/n/10.95 Race|  
+ []
+
+
+Overfull \hbox (6.14871pt too wide) in paragraph at lines 367--367
+[]|\TU/lmr/bx/n/10.95 Rate|  
+ []
+
 [7
 
 ]

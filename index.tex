@@ -197,7 +197,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, breakable, frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, boxrule=0pt, sharp corners, frame hidden, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -340,8 +340,8 @@ RSV-NET.
   below table
 
   \begin{longtable}[]{@{}
-    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2639}}
-    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7361}}@{}}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.0462}}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.9538}}@{}}
   \toprule()
   \begin{minipage}[b]{\linewidth}\raggedright
   Column Name
@@ -437,11 +437,22 @@ regression is also known as polynomial Linear regression.
 
 \includegraphics{./images/polynomial_regression_fit.gif}
 
-Polynomial Regression is a form of Linear regression known as a special
-case of Multiple linear regression which estimates the relationship as
-an nth degree polynomial. Polynomial Regression is sensitive to Outliers
-so the presence of one or two Outliers can also badly affect the
-performance.
+In~statistics,~\textbf{polynomial regression}~is a form of~regression
+analysis~in which the relationship between the~independent
+variable~\emph{x}~and the~dependent variable~\emph{y}~is modelled as
+an~\emph{n}th degree~polynomial~in~\emph{x}. Polynomial regression fits
+a nonlinear relationship between the value of~\emph{x}~and the
+corresponding~conditional mean~of~\emph{y}, denoted
+E(\emph{y}~\textbar{}\emph{x}). Although~\emph{polynomial
+regression}~fits a nonlinear model to the data, as a~statistical
+estimation~problem it is linear, in the sense that the regression
+function E(\emph{y}~\textbar~\emph{x}) is linear in the
+unknown~parameters~that are estimated from the~data. For this reason,
+polynomial regression is considered to be a special case of~multiple
+linear regression. The explanatory (independent) variables resulting
+from the polynomial expansion of the ``baseline'' variables are known as
+higher-degree terms. Such variables are also used
+in~classification~settings\textsuperscript{{[}10{]}}.
 
 \bookmarksetup{startatroot}
 
@@ -901,6 +912,8 @@ Samore, Matthew BMC infectious diseases, 2011, Vol.11 (1), p.105-105
 
 {[}9{]}Conventional and fuzzy regression: theory and engineering
 applications. (2018). Nova Science Publishers, Inc.
+
+{[}10{]} \url{https://en.wikipedia.org/wiki/Polynomial_regression}
 
 \bookmarksetup{startatroot}
 

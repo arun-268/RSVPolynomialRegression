@@ -197,7 +197,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, sharp corners, interior hidden, breakable, enhanced, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, breakable, frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -231,28 +231,29 @@ Predicting RSV in USA}
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
-Respiratory Syncytial Virus (RSV) was discovered in 1956 and has since
-been recognized as one of the most common causes of childhood illness.
-RSV symptoms usually look like a common cold, but it can be serious,
-leading to bronchiolitis (inflammation of the small airways in the lung)
-and pneumonia, especially for infants and older adults.
+Respiratory Syncytial Virus (RSV) was discovered in 1956 and has been
+recognized as one of the most common causes of childhood illness. RSV
+symptoms usually look like a common cold, but it can be serious, leading
+to bronchiolitis (inflammation of the small airways in the lung) and
+pneumonia, especially for infants and older adults.
 
 According to the Centers for Disease Control and Prevention, RSV results
 in around 58,000 annual hospitalizations~and 100 to 300 deaths among
-children under 5{[}1{]}. In most regions of the United States, RSV
-circulation starts in the fall and peaks in the winter. With
+children under 5.\textsuperscript{{[}1{]}} In most regions of the United
+States, RSV circulation starts in the fall and peaks in the winter. With
 mask-wearing and physical distancing for COVID-19, there were fewer
 cases of RSV in 2020. However, RSV cases began to increase in spring
 2021 when safety measures relaxed with the arrival of COVID-19 vaccines.
-This year, RSV in multiple U.S. regions are nearing seasonal peak levels
-and is filling hospital beds. {[}2{]} It is unclear to anyone where RSV
-will lead us, a reliable prediction model for RSV data is very crucial
-for policymakers to implement fast actions to curb the spread of the
-infection, and for health system to get prepared not to be overburdened,
-and for infectious disease researchers to conduct further researches.
+This year, RSV in multiple U.S. regions are nearing seasonal peak
+levels. \textsuperscript{{[}2{]}} It is unclear to anyone where RSV will
+lead us, a reliable prediction model for RSV data is very crucial for
+policymakers to implement fast actions to curb the spread of the
+infection, and for public health professionals to understand trends in
+virus circulation, estimate disease burden, and respond to outbreaks.
 
 \includegraphics{./images/paste-84838FB2.png}\\
 
+Figure 1.1
 \href{https://www.cdc.gov/rsv/research/rsv-net/dashboard.html}{RSV-NET
 Interactive Dashboard \textbar{} CDC}
 
@@ -262,29 +263,31 @@ Interactive Dashboard \textbar{} CDC}
 Respiratory syncytial virus (RSV) infection trend has gained many
 researchers' concerns globally. Thongpan, Ilada etc. applied
 multivariate time-series analysis to show the possible prediction of RSV
-activity based on the climate in Thailand. {[}3{]} The other researchers
-to track RSV through internet search engine data. Oren, Eyal etc.
-highlights the use of search filters and domain adaptation techniques to
-assist in identifying spread of both local and more widespread RSV
-transmission where comprehensive epidemiological data is not easy to
-collect {[}4{]}. Manuel, Britta etc. applied logistic regression to
-develop a prediction model and developed a web-based application to
-predict the individual probability of RSV infection{[}5{]}.\\
+activity based on the climate in Thailand. \textsuperscript{{[}3{]}} The
+other researchers tracked RSV through internet search engine data. Oren,
+Eyal etc. highlighted the use of search filters and domain adaptation
+techniques to assist in identifying spread of both local and more
+widespread RSV transmission where comprehensive epidemiological data is
+not easy to collect.\textsuperscript{{[}4{]}} Manuel, Britta etc.
+applied logistic regression to develop a prediction model and developed
+a web-based application to predict the individual probability of RSV
+infection.\textsuperscript{{[}5{]}}\\
 Furthermore, researchers are using different modeling approaches to
-predict the RSV trend. A research done by Reis, Julia etc. try to built
-a real-time RSV prediction system using a
+predict the RSV trend. A research done by Reis, Julia etc. tried to
+built a real-time RSV prediction system using a
 susceptible-infectious-recovered (SIR) model in conjunction with an
-ensemble adjustment Kalman filter (EAKF) and 10 years CDC data{[}6{]}.
-Bayesian stochastic susceptible‐infected‐recovered‐susceptible (SIRS)
-model is presented by Corberán-Vallet etc. to understand RSV dynamics in
-the region of Valencia, Spain. However, this continuous‐time
-deterministic model is not suitable when the initial number of infected
-individuals is small{[}7{]}. Leecaster, Molly etc. use simple linear
+ensemble adjustment Kalman filter (EAKF) and 10 years CDC
+data\textsuperscript{{[}6{]}}. Bayesian stochastic
+susceptible‐infected‐recovered‐susceptible (SIRS) model was presented by
+Corberán-Vallet etc. to understand RSV dynamics in the region of
+Valencia, Spain. However, this continuous‐time deterministic model is
+not suitable when the initial number of infected individuals is
+small\textsuperscript{{[}7{]}}. Leecaster, Molly etc. use simple linear
 regression to explore the relationship between three epidemic
 characteristics (final epidemic size, days to peak, and epidemic length)
 and exponential growth calculated from four weeks of daily case data.
 They find out exponential growth was correlated to epidemic
-characteristics{[}8{]}.
+characteristics\textsuperscript{{[}8{]}}.
 
 \hypertarget{problem-statement}{%
 \section{Problem Statement}\label{problem-statement}}
@@ -305,7 +308,7 @@ Surveillance Network (RSV-NET)** (one of CDC research and surveillance
 platforms) ,which conducts population-based surveillance system for
 laboratory-confirmed COVID-19, RSV, and influenza-associated
 hospitalizations in the US among children younger than 18 years of age
-and adults.\^{}\textbackslash{[}8\textbackslash{]}\^{}
+and adults.\textsuperscript{{[}8{]}}
 
 RSV-NET has been collecting RSV-associated hospitalizations in adults
 and children since 2018-2019 season from 58 counties in 12 states,
@@ -314,169 +317,66 @@ Michigan, Minnesota, New Mexico, New York, Oregon, Tennessee, and Utah.
 Almost 9\% of the U.S. population is covered and reported by the
 RSV-NET.
 
-\hypertarget{why-rsv-net-data-are-important}{%
-\section{Why RSV-NET Data are
-Important}\label{why-rsv-net-data-are-important}}
-
-RSV-NET is a population-based surveillance system. Population-based
-surveillance is the active collection, analysis, and interpretation of
-data on a population in a specified geographic area. Tracking
-RSV-associated hospitalization rates helps public health professionals
-understand trends in virus circulation, estimate disease burden, and
-respond to outbreaks. Hospitalization rates show how many people in the
-surveillance area are hospitalized with RSV, compared to the total
-number of people residing in that area.
-
 \hypertarget{about-this-dataset}{%
 \section{About this Dataset}\label{about-this-dataset}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Time frame: In season 2018-2019, 2019-2020, data collected is from
-  October 1 to April 30. In season 2020-2021, 2021-2022, 2022-2023, data
-  collected is from October 1 to October 1 next year.
+  \textbf{Time frame:} In season 2018-2019, 2019-2020, data collected is
+  from October 1 to April 30. In season 2020-2021, 2021-2022, 2022-2023,
+  data collected is from October 1 to October 1 next year.
 \item
+  \textbf{How an entry is made in data set:}
+
   A case is defined by laboratory-confirmed RSV in a person who Lives in
   a defined RSV-NET surveillance area AND Tests positive for RSV within
-  14 days before or during hospitalization.
-  \^{}\textbackslash{[}8\textbackslash{]}\^{}
+  14 days before or during hospitalization. Evidence of RSV infection
+  can be obtained through several laboratory tests.
 \item
-  Variables we selected from this dateset are:
+  \textbf{Variables:}
 
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \item
-    \textbf{MMWR Week}: Represents week of that year. MMWR -
-    \textbf{Morbidity and Mortality Weekly Report,} is prepared by the
-    Centers for Disease Control and Prevention (CDC).
-  \item
-    \textbf{Rate:} calculated as the number of residents in a
-    surveillance area who are hospitalized with laboratory-confirmed RSV
-    divided by the total population estimate for that area. {[}NCHS
-    bridged-race
-    population{]}(\url{https://www.cdc.gov/nchs/nvss/bridged_race.htm})~estimates
-    are used as denominators for rate calculations.
-  \end{enumerate}
+  In the original data set, it has 8 columns which are described in
+  below table
+
+  \begin{longtable}[]{@{}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2639}}
+    >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7361}}@{}}
+  \toprule()
+  \begin{minipage}[b]{\linewidth}\raggedright
+  Column Name
+  \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+  Description
+  \end{minipage} \\
+  \midrule()
+  \endhead
+  State & Represents the state name from which data was collected.
+  Entire state means all 9 states considered in this dataset. \\
+  MMWR Year & Represents Year \\
+  \textbf{MMWR Week} & Represents week of that year. MMWR -
+  \emph{Morbidity and Mortality Weekly Report,} is prepared by the
+  Centers for Disease Control and Prevention (CDC). \\
+  Season & As the data is collected between October to April, this
+  represents the duration of the year. \\
+  Age Category & Age limit \\
+  Sex & Male/Female \\
+  Race & Black, White, American Indian/Alaska Native and Asian/Pacific
+  Islander people are categorized as non-Hispanic. Hispanic people could
+  be of any race. If Hispanic ethnicity was unknown, non-Hispanic
+  ethnicity was assumed. \\
+  \textbf{Rate} & calculated as the number of residents in a
+  surveillance area who are hospitalized with laboratory-confirmed RSV
+  divided by the total population estimate for that area. {[}NCHS
+  bridged-race
+  population{]}(\url{https://www.cdc.gov/nchs/nvss/bridged_race.htm})~estimates
+  are used as denominators for rate calculations. \\
+  \bottomrule()
+  \end{longtable}
+
+  The data was last updated on \textbf{17th November 2022}. We have
+  considered two sets of data, one with last 12 months of YTD data and
+  another one with 24 months of YTD data for our calculations.
 \end{enumerate}
-
-\hypertarget{how-an-entry-is-made-in-dataset}{%
-\subsection{How an entry is made in
-dataset}\label{how-an-entry-is-made-in-dataset}}
-
-A case is defined by laboratory-confirmed RSV in a person who:
-
-\begin{itemize}
-\item
-  Lives in a defined RSV-NET surveillance area AND
-\item
-  Tests positive for RSV within 14 days before or during
-  hospitalization.
-\end{itemize}
-
-Evidence of RSV infection can be obtained through several laboratory
-tests:
-
-\begin{itemize}
-\item
-  Molecular assays, such as reverse transcription polymerase chain
-  reaction (RT-PCR)
-\item
-  Commercially available rapid antigen detection tests
-\item
-  Serology tests, or antibody tests (must be paired acute and
-  convalescent specimens)
-\item
-  Immunofluorescence antibody staining, including direct (DFA) and
-  indirect (IFA) fluorescent antibody tests
-\item
-  Viral culture
-\end{itemize}
-
-\hypertarget{calculating-hospitalization-rates}{%
-\subsection{\texorpdfstring{\textbf{Calculating Hospitalization
-Rates}}{Calculating Hospitalization Rates}}\label{calculating-hospitalization-rates}}
-
-To calculate RSV-associated hospitalization rates, RSV-NET collects the
-following data from identified cases:
-
-\begin{itemize}
-\item
-  Age
-\item
-  Sex
-\item
-  Race and ethnicity
-\item
-  County of residence
-\item
-  Date of hospital admission
-\item
-  Date of RSV test
-\item
-  Positive RSV test result
-\end{itemize}
-
-Hospitalization rates are calculated as the number of residents in a
-surveillance area who are hospitalized with laboratory-confirmed RSV
-divided by the total population estimate for that area.
-\href{https://www.cdc.gov/nchs/nvss/bridged_race.htm}{NCHS bridged-race
-population}~estimates are used as denominators for rate calculations.
-
-The table below summarizes changes in surveillance populations and
-collection of clinical data by surveillance year. Because the
-surveillance areas and age groups included in surveillance have changed
-over time, trends should be interpreted with caution (see table below).
-
-\includegraphics{./images/paste-72BAB924.png}
-
-\hypertarget{whats-in-this-dataset}{%
-\subsection{What's in this Dataset?}\label{whats-in-this-dataset}}
-
-Each row in the dataset is a laboratory confirmed RSV associated
-hospitalization. It has 8 columns which are described in below table
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2083}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7917}}@{}}
-\toprule()
-\begin{minipage}[b]{\linewidth}\raggedright
-Column Name
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Description
-\end{minipage} \\
-\midrule()
-\endhead
-State & Represents the state name from which data was collected. Entire
-state means all 9 states considered in this dataset. \\
-MMWR Year & Represents Year \\
-MMWR Week & Represents week of that year. MMWR - \emph{Morbidity and
-Mortality Weekly Report,} is prepared by the Centers for Disease Control
-and Prevention (CDC). \\
-Season & As the data is collected between October to April, this
-represents the duration of the year. \\
-Age Category & Age limit \\
-Sex & Male/Female \\
-Race & Black, White, American Indian/Alaska Native and Asian/Pacific
-Islander people are categorized as non-Hispanic. Hispanic people could
-be of any race. If Hispanic ethnicity was unknown, non-Hispanic
-ethnicity was assumed. \\
-Rate & Rates presented by race and ethnicity are calculated using
-records wit known race. Those with missing or unknown race are excluded
-from specific estimates but are included in overall esitmates.
-Hospitalization rates are based only on those who had positive test
-results for RSV through a test ordered by a health care professional not
-all people hospitalized with respiratory illness are tested for RSV \\
-\bottomrule()
-\end{longtable}
-
-\textbf{Variables Considered:}
-
-Of the other available column values we have considered columns
-``\textbf{MMWR Week}'' \& ``\textbf{Rate}'' for our model. The data was
-last updated on \textbf{17th November 2022}. We have considered two sets
-of data, one with last 12 months of YTD data and another one with 24
-months of YTD data for our calculations.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -495,18 +395,14 @@ Hence, we introduce polynomial regression to overcome this problem,
 which helps identify the curvilinear relationship between independent
 and dependent variables.
 
-\textbf{One Year-to-date Data:}
-
-\includegraphics[width=6.59375in,height=\textheight]{./images/paste-4507D324.png}
-
-\textbf{Two Year-to-date Data:}
-
-\includegraphics[width=6.66667in,height=\textheight]{./images/paste-4D5AA4F8.png}
+\includegraphics{./images/1_7w8mfB_Ecfr0x76Vc7qang.gif}
 
 \hypertarget{how-polynomial-regression-overcomes-the-problem-of-non-linear-data}{%
 \subsection{\texorpdfstring{\textbf{How Polynomial Regression Overcomes
 the problem of Non-Linear
 data?}}{How Polynomial Regression Overcomes the problem of Non-Linear data?}}\label{how-polynomial-regression-overcomes-the-problem-of-non-linear-data}}
+
+\includegraphics{./images/PolyRegressionConversion.gif}
 
 Polynomial regression is a form of Linear regression where only due to
 the Non-linear relationship between dependent and independent variables
@@ -538,6 +434,8 @@ and y. And the values of x and y are already given to us, only we need
 to determine coefficients and the degree of coefficient here is 1 only,
 and degree one represents simple linear regression Hence, Polynomial
 regression is also known as polynomial Linear regression.
+
+\includegraphics{./images/polynomial_regression_fit.gif}
 
 Polynomial Regression is a form of Linear regression known as a special
 case of Multiple linear regression which estimates the relationship as

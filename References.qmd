@@ -20,3 +20,5 @@ editor: visual
 \[8\] Modeling the variations in pediatric respiratory syncytial virus seasonal epidemics, Leecaster, Molly ; Gesteland, Per ; Greene, Tom ; Walton, Nephi ; Gundlapalli, Adi ; Rolfs, Robert ; Byington, Carrie ; Samore, Matthew BMC infectious diseases, 2011, Vol.11 (1), p.105-105
 
 \[9\]Conventional and fuzzy regression: theory and engineering applications. (2018). Nova Science Publishers, Inc.
+
+\[10\] <https://en.wikipedia.org/wiki/Polynomial_regression>

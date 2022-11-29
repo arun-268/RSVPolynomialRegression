@@ -1,6 +1,6 @@
 ---
-title: "PolyPresentation"
-subtitle: "STA6257: Advanced Statistical Modeling"
+title: "Presentation on Polynomial Regression"
+subtitle: "using CDC data with Application for Predicting RSV in USA"
 author: Arun & Zhongyi
 editor: visual
 format: 

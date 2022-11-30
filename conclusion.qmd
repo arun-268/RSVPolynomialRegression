@@ -5,14 +5,14 @@ editor: visual
 
 ## Summary
 
-Respiratory syncytial virus has been gaining more and more attention since the hospitalization rate has been increasing dramatically while there is no vaccines available now. A reliable regression model will benefit us to better prepare for it.
+The rise of Respiratory syncytial virus hosipitalization rates has been getting us more and more attention. A reliable regression model to predict the trend of the virus is very important.
 
-Our article has generated a model that has a well fit (multiple R square =0.9606 and RMSE=0.16) through polynomial regression analysis. Also, we compared the model based on the data with one year span with two year span, and found that using one year-to-date data could help to build a better model for predicting RSV hospitalization rates. Further researches might be conducted to find out if modeling according to one year-to-data is always better for the seasonal diseases, like RSV.
+We have built a model that has a well fit (multiple R square =0.9606 and RMSE=0.16) through polynomial regression analysis in this article. Also, compared the model based on the data with one year span with two year span, we found that using one year-to-date data could help to build a better model for predicting RSV hospitalization rates. Further researches might be conducted to find out if modeling according to one year-to-data is always better to predict some other seasonal diseases, like RSV.
 
-Furthermore, 3 month future RSV hospitalization rates were calculated. If there is nothing to be done to stop the spread, the hospitalization rates in the next 3 months could be very high, even to 9.
+Furthermore, next 3 month (11/14/2022-2/5/2023) RSV hospitalization rates were calculated. The hospitalization rates in the next 3 month could be as high as 9%.
 
 ## Limitation
 
-From the polynomial regression approach, we know that it is very sensitive to the outliers. The current high rates might shift our model and affect the results. Second, polynomial may provide good fits within the range of data, but they will frequently deteriorate rapidly outside the range of the data. To gain a better accurate prediction, people need to repeatedly generate new models. Third, In order to model data with a complicated structure, the degree of the model must be high, indicating and the associated number of parameters to be estimated will also be high. This can result in highly unstable models. Other approaches might be applied combined with polynomial regression to attain a more stable model.
+First, our model created from polynomial regression analysis may have a good fit within certain range of the data we selected, but for outside the range of the data, the prediction might not be accurate. To gain a better accurate prediction, people need to repeatedly generate new models.
 
-From the aspect of the data collection, it only includes 58 counties in 12 states from 2018 to now, it might not give us the whole picture of how respiratory syncytial virus evolved and spread in USA. More data is needed to provide a better prediction.
+Second, our data set only includes 58 counties in 12 states from 2018 to now, it might not give us the whole picture of how respiratory syncytial virus evolved and spread in USA. More data is needed to provide a more precise prediction.
